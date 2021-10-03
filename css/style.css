@@ -24,7 +24,22 @@ form {
 	font-size:4.0em;color:#FFF;
 }
 
-.arrow {
+input {
+	margin-top: 40px;
+	width: 820.835971723015px;
+	height: 51.999999999999886px;
+	font-family: Arial;
+	font-size: 36.0px;
+	font-weight: 400;
+	color: #FFFFFF;
+	border-top: 5.0px solid #FFFFFF;
+	border-right: 5.0px solid #FFFFFF;
+	border-bottom: 5.0px solid #FFFFFF;
+	border-left: 5.0px solid #FFFFFF;
+	padding: 10px;
+}
+
+button.arrow {
 	width: 52.999999999999545px;
 	height: 50.20450281425889px;
 	opacity: 0.67;
@@ -42,6 +57,27 @@ form {
 	border-top-right-radius: 6px;
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
+}
+
+button#login {
+	margin-top: 40px;
+	width: 400.30465327698505px;
+	height: 100.0px;
+	opacity: 0.67;
+	font-family: Arial;
+	font-size: 48.0px;
+	font-weight: 400;
+	text-align: center;
+	color: #030303;
+	background-image: linear-gradient(180.0deg, #4736507A 0.001%, #E6E6E67A 99.99999999999999%);
+	border-top: 1.0px solid #333233;
+	border-right: 1.0px solid #333233;
+	border-bottom: 1.0px solid #333233;
+	border-left: 1.0px solid #333233;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;	
 }
 
 .tittle-container {
