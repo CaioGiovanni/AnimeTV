@@ -2,18 +2,41 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="AnimeTV"/>
 
     <title>AnimeTV</title>
-
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 </head>
 
 <body>
-    <h1>Offline clock and image</h1>
-    <p><strong>WHILE OFFLINE PLEASE RELOAD THIS PAGE</strong></p>
-    <p><output id="clock"></output></p>
-    <img src="images/tizen.png" alt="" />
+	<div class="tittle-container">
+		<h1 id="tittle">AnimeTV</h1>
+	    <img alt="AnimeTV" id="logo" src="images/AnimeTV_Logo.png"></img>
+	</div>
+
+	<div class="login-container">
+		<h2>Bem-vindo(a) ao Anime TV</h2>
+		<h3>Favor, insira usuário e senha para acessar nosso catáogo</h3>
+		<div class="container">
+		  <div class="row justify-content-center align-items-center">
+		    <form class="col-12">
+		      <div class="form-group">
+		        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Informe seu usuário">
+		      </div>
+		      <div class="form-group">
+		        <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Informe sua senha">
+		      </div>
+		    </form>   
+		  </div>  
+		</div>
+	</div>
+	
+    <script src="js/main.js"></script>
 </body>
 </html>
