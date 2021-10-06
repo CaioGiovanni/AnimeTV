@@ -61,6 +61,10 @@ input {
 	border-left: 5.0px solid #FFFFFF;
 	padding: 10px;
 }
+.sticky {
+  position: sticky;
+  top: 0;
+}
 
 button.arrow {
 	width: 52.999999999999545px;
@@ -131,4 +135,15 @@ button {
 	text-align: center;
 	justify-content: center;
 }
+
+#descricao_ep{
+
+	border: 2px solid #ffffff;
+	padding: 10px;
+    border-radius: 3px;
+    margin-top: -1%;
+    
+    
+}
+
 
