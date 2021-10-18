@@ -53,7 +53,6 @@ Main.handleKeyDownEvents = function () {
     		break;
     	case tvKey.ENTER: //OK button
     		console.log("OK");
-    		Player.setDisplayArea(0, 0, 1920, 1080);
     		if (Player.videoElem.state == true) {
     			Player.pause();
     		} else {
@@ -64,7 +63,6 @@ Main.handleKeyDownEvents = function () {
     		console.log("RETURN");
     		//window.location.replace("detalhes.html");
     		window.location.replace("index.html");
-    		//Player.setDisplayArea(0, 0, 960, 540);
     		break;
     	case tvKey.PLAYPAUSE: // PLAYPAUSE button
     		console.log("PLAYPAUSE");
