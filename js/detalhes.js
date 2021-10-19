@@ -1,38 +1,33 @@
-var Main = {};
+var Detalhes = {};
 var elems;
 var actualFocused;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
-Main.onLoad = function () {
-	console.log("Main.onLoad()");
+Detalhes.onLoad = function () {
+	console.log("Detalhes.onLoad()");
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
 	// setup handler to key events
-	Main.handleKeyDownEvents();
+	Detalhes.handleKeyDownEvents();
 };
 
 // called when application has closed
-Main.onUnload = function () {
+Detalhes.onUnload = function () {
 	console.log("Main.onUnload()");
 };
 
 // handle all keydown events triggered through remote control.
-Main.handleKeyDownEvents = function () {
+Detalhes.handleKeyDownEvents = function () {
 
 	// add eventListener for keydown
     document.addEventListener('keydown', function(e) {
     	    	
     	switch(e.keyCode){
     	case tvKey.LEFT: //LEFT arrow
-        	console.log("LEFT");
-        	if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 2)) {
-        		moveBackward(actualFocused);
-        	}
-    		break;
-    	case tvKey.UP: //UP arrow
-    		console.log("UP");
+        	
+    		console.log("LEFT");
     		if (!(actualFocused == 0)) {
     			if (actualFocused == 3) {
     				moveBackward(2);
@@ -42,27 +37,42 @@ Main.handleKeyDownEvents = function () {
     			}
         	}
     		break;
-    	case tvKey.RIGHT: //RIGHT arrow
-    		console.log("RIGHT");
+    	
+    	case tvKey.UP: //UP arrow
+    		console.log("UP");
     		if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 3)) {
         		moveNext(actualFocused);
         	}
     		break;
-    	case tvKey.DOWN: //DOWN arrow
-    		console.log("DOWN");
+    		
+    	case tvKey.RIGHT: //RIGHT arrow
+    	
+    		console.log("RIGHT");
     		if (!(actualFocused == 2 || actualFocused == 3)) {
         		moveNext(actualFocused);
         	}
     		break;
+    		break;
+    	case tvKey.DOWN: //DOWN arrow
+    		console.log("LEFT");
+        	if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 2)) {
+        		moveBackward(actualFocused);
+        	}
     	case tvKey.ENTER: //OK button
     		console.log("OK");
-			if (actualFocused == 3) {
-				window.location.replace("detalhes.html");
+    		if (actualFocused == 0) {
+				/*add lista*/
+			}
+    		if (actualFocused == 1) {
+				window.location.replace("episodios.html");
+			}
+			if (actualFocused == 2) {
+				window.location.replace("play.html");
 			}
     		break;
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
-    		window.location.replace("index.html");
+    		window.location.replace("home.html");
     		break;
     	default:
     		console.log("Key code : " + e.keyCode);
@@ -72,8 +82,8 @@ Main.handleKeyDownEvents = function () {
 };
 
 // binding some events
-window.onload = Main.onLoad;
-window.onunload = Main.onUnload;
+window.onload = Detalhes.onLoad;
+window.onunload = Detalhes.onUnload;
 
 /*********************************************** Player *************************************************/
 

@@ -62,7 +62,7 @@ Main.handleKeyDownEvents = function () {
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
     		//window.location.replace("detalhes.html");
-    		window.location.replace("index.html");
+    		window.location.replace("home.html");
     		break;
     	case tvKey.PLAYPAUSE: // PLAYPAUSE button
     		console.log("PLAYPAUSE");

@@ -11,7 +11,10 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+
+    <script src="js/episodios.js"></script>
+      <script src="js/keyTizen.js"></script>
+    
 </head>
 
 <body>
@@ -23,23 +26,23 @@
     <div class="col-sm-4 sticky">
    	  <img alt="capa anime" src="images/Anime1.png" class="img-responsive container" id="capa_anime">
    	  <div class="row content align-center"style="margin:1em">
-		 <button type="submit" id="btn_add_lista" class="button-32">Adcionar a lista</button>
+		 <button type="submit" tabindex="0" id="btn_add_lista" class="button-32 focusable">Adcionar a lista</button>
 		</div>
     </div>
     <div class="col-sm-8 text-justify"> 
       <h1 id="titulo-anime">Majutsushi Orphen (魔術士オーフェン)</h1>
        
-      <div class="container episodios">
+      <div tabindex="1" class="container episodios focusable">
       	<div class="col-sm-5">
       	<img alt="capa anime" src="images/episode.png" class="img-responsive" id="capa_episodio">
       	</div>
-      	<div class="col-sm-7">
+      	<div  class="col-sm-7 ">
       	<h3 id="titulo_episodio">Episode 1</h3>
       	<p id="descricao_ep" >In un mondo medievale popolato da mostri e creature magiche, Orphen è un giovane combattente dagli straordinari poteri magici.</p>
       	</div>
       </div>
       
-      <div class="container episodios">
+      <div class="container episodios focusable" tabindex="2">
       	<div class="col-sm-5">
       	<img alt="capa anime" src="images/episode.png" class="img-responsive" id="capa_episodio">
       	</div>
@@ -49,7 +52,7 @@
       	</div>
       </div>
       
-      <div class="container episodios">
+      <div class="container episodios focusable"  tabindex="3">
       	<div class="col-sm-5">
       	<img alt="capa anime" src="images/episode.png" class="img-responsive" id="capa_episodio">
       	</div>
@@ -82,9 +85,6 @@
   </div>
   
   </div>
-  
  
- 
-    <script src="js/main.js"></script>
 </body>
 </html>
