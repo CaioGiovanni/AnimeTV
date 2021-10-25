@@ -142,12 +142,10 @@ button {
 	padding: 10px;
     border-radius: 3px;
     margin-top: -1%;
-    
-    
 }
 
 :focus {
-	outline: 3px solid red;
+	outline: 10px solid red;
 }
 
 

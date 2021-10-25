@@ -44,7 +44,7 @@ Main.handleKeyDownEvents = function () {
     		break;
     	case tvKey.RIGHT: //RIGHT arrow
     		console.log("RIGHT");
-    		if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 3)) {
+    		if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 4)) {
         		moveNext(actualFocused);
         	}
     		break;
@@ -56,8 +56,11 @@ Main.handleKeyDownEvents = function () {
     		break;
     	case tvKey.ENTER: //OK button
     		console.log("OK");
-			if (actualFocused == 3) {
+			if (actualFocused == 2) {
 				window.location.replace("detalhes.html");
+			}
+			if (actualFocused == 3) {
+				window.location.replace("cadastro.html");
 			}
     		break;
     	case tvKey.RETURN: //RETURN button
@@ -85,6 +88,7 @@ function moveNext(tidx) {
         	actualFocused = tidx + 1;
         }
     }
+    console.log(actualFocused);
 }
 
 function moveBackward(tidx) {
@@ -95,4 +99,5 @@ function moveBackward(tidx) {
         	actualFocused = tidx - 1;
         }
     }
+    console.log(actualFocused);
 }
