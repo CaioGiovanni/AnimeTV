@@ -27,31 +27,26 @@ Main.handleKeyDownEvents = function () {
     	switch(e.keyCode){
     	case tvKey.LEFT: //LEFT arrow
         	console.log("LEFT");
-        	if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 2)) {
+        	if (!(actualFocused == 0 || actualFocused == 3)) {
         		moveBackward(actualFocused);
         	}
     		break;
     	case tvKey.UP: //UP arrow
     		console.log("UP");
-    		if (!(actualFocused == 0)) {
-    			if (actualFocused == 3) {
-    				moveBackward(2);
-    			}
-    			else {
-    				moveBackward(actualFocused);	
-    			}
+    		if ((actualFocused == 3 || actualFocused == 4 || actualFocused == 5)) {
+				moveNext(actualFocused - 4);
         	}
     		break;
     	case tvKey.RIGHT: //RIGHT arrow
     		console.log("RIGHT");
-    		if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 4)) {
+    		if (!(actualFocused == 2 || actualFocused == 5)) {
         		moveNext(actualFocused);
         	}
     		break;
     	case tvKey.DOWN: //DOWN arrow
     		console.log("DOWN");
-    		if (!(actualFocused == 2 || actualFocused == 3)) {
-        		moveNext(actualFocused);
+    		if ((actualFocused == 0 || actualFocused == 1 || actualFocused == 2)) {
+				moveNext(actualFocused + 2);
         	}
     		break;
     	case tvKey.ENTER: //OK button

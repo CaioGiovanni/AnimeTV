@@ -1,0 +1,90 @@
+body  {
+    background:#8D46B8;    
+  	font-family: sans-serif;
+  	
+}
+.seta.fas {
+  color : yellow;
+  height: 10em;
+ font-size: 60px;
+ margin-top:4em;
+}
+
+h2 {
+    font-size:3.5em;margin:10px 10px 20px 10px;color:#FFF;
+}
+h1 {
+    font-size:4em;margin:10px 10px 20px 10px;color:#FFF;
+    font-weight:900;
+}
+
+h3 {
+    font-size:3.5em;margin:10px 10px 20px 10px;color:#FFF;
+}
+
+h1#tittle {
+    font-size:4.0em;margin:0px 10px 0px 0px;color:#FFF;
+   
+}
+
+p {
+	font-size:2.2em;
+	font-weight:400;
+	margin:80px 10px 80px 10px;
+	
+	color: white;
+}
+
+button.arrow {
+	width: 52.999999999999545px;
+	height: 50.20450281425889px;
+	opacity: 0.67;
+	font-family: Arial;
+	font-size: 36.0px;
+	font-weight: 400;
+	text-align: center;
+	color: #030303;
+	background-color: #fff000;
+	border-top: 1.0px solid #333233;
+	border-right: 1.0px solid #333233;
+	border-bottom: 1.0px solid #333233;
+	border-left: 1.0px solid #333233;
+	border-radius:10px
+}
+
+button {
+	margin-top: 40px;
+	width: 400.30465327698505px;
+	height: 100.0px;
+	opacity: 0.67;
+	font-family: Arial;
+	font-size: 36.0px;
+	font-weight: 400;
+	text-align: center;
+	color: #030303;
+	background-color: #fff000;
+	border-top: 1.0px solid #333233;
+	border-right: 1.0px solid #333233;
+	border-bottom: 1.0px solid #333233;
+	border-left: 1.0px solid #333233;
+	border-radius:10px
+}
+
+.tittle-container {
+	display: inline-flex;
+  	align-items:center;
+}
+
+.image-block {
+	display: inline-flex;
+  	align-items:center;
+}
+
+:focus {
+	outline: 10px solid red;
+}
+
+img:not(#logo) {
+	width: 45%;
+	height: 45%;
+}
