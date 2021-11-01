@@ -184,7 +184,7 @@ button {
 }
 
 :focus {
-	outline: 10px solid white;
+	outline: 10px solid red;
 }
 
 

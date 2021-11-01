@@ -9,6 +9,20 @@ Main.onLoad = function () {
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
+	try {
+		var t = tau.animation.target;
+	    //,blueBox = document.getElementById('cadastro');
+		t('.login-container').tween('swing', 1000);
+		//t('#cadastro').tween({rotateZ: 120}, 1000); /* Transform */
+		/* CSS property */
+		//t('#cadastro').tween({backgroundColor: 'red', border: '10px 10px 10px 3px white'}, 1000);
+		//t('#cadastro').tween('swing', 1000).tween('tada', 1000);
+	}
+	catch (e) {
+		// TODO: handle exception
+	}
+	//t(blueBox);
+	
 	// setup handler to key events
 	Main.handleKeyDownEvents();
 };
@@ -58,6 +72,7 @@ Main.handleKeyDownEvents = function () {
     		console.log("OK");
 			if (actualFocused == 2) {
 				window.location.replace("home.html");
+				//window.location.href="#two";
 			}
 			if (actualFocused == 3) {
 				window.location.replace("cadastro.html");
