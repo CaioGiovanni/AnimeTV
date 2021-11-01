@@ -8,10 +8,11 @@
     <title>AnimeTV</title>
     
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/home.css"/>
 	
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+  	<script language="javascript" type="text/javascript" src="js/keyTizen.js"></script>
+    <script src="js/home.js"></script>
 </head>
 
 <body>
@@ -21,11 +22,11 @@
 	   <img alt="AnimeTV" id="logo" src="images/AnimeTV_Logo.png"></img>
 	</div>
 	<div class="col-lg-4" style="margin-top: -40px;">
-  	<button type="submit" id="btn_add_lista">Adicionados a Lista</button>
+  	<button type="submit" id="btn_add_lista" class="focusable" tabindex="0">Adicionados a Lista</button>
   	</div>
 	
-	<div class="col-lg-4" id="divBusca">
-	   <input type="text" id="txtBusca" placeholder="Buscar..."/>
+	<div class="col-lg-4 " id="divBusca"  >
+	   <input type="text" id="txtBusca" class ="focusable" tabindex="1" placeholder="Buscar..."/>
 	   <i class="fas fa-search"> </i>
 	</div>
 	
@@ -33,58 +34,57 @@
 </div>
 	
 	
-<div id="slide_avaliados" class="row container-fluid" style="margin-top:5em; padding-left:2em; width: 100%">
+<div id="slide_avaliados"  class="row container-fluid" style="margin-top:5em; padding-left:2em; width: 100%">
 
  <h2>Mais Bem Avaliados</h2>
-  <div class="col-lg-1">
-  <i class="fas fa-chevron-left seta"></i>
-  </div>
 
-   <div class="col-lg-10" style="margin-left:-4em">
-	    <div class="col-lg-4">
-	   	  <a><img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" class="img-responsive container" id="capa anime"></a>
+
+   <div class="col" style="margin-left:-4em">
+	    <div class="col-lg-3">
+	   	  <a><img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" tabindex="2" class="img-responsive container focusable" id="capa anime"></a>
 	    </div> 
-	     <div class="col-lg-4">
-	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" class="img-responsive container" id="capa anime">
+	     <div class="col-lg-3">
+	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" tabindex="3" class="img-responsive container focusable" id="capa anime">
 	    </div>
-	    <div class="col-lg-4">
-	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" class="img-responsive container" id="capa anime">
+	    <div class="col-lg-3">
+	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" tabindex="4" class="img-responsive container focusable" id="capa anime">
+	    </div> 
+	    
+	    <div class="col-lg-3">
+	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" tabindex="5" class="img-responsive container focusable" id="capa anime">
 	    </div> 
    </div>
 	  
-   <div class="col-lg-1">
-	  <i class="fas fa-chevron-right seta"></i>
-   </div>
-
+  
 </div>
 
-<div id="slide_romance" class="row container-fluid" style=" padding-left:2em; width: 100%">
+<div id="slide_romance" class="row container-fluid" style=" padding-left:2em; width: 100%; margin-top:2em">
 
  <h2>Melhores de Romance</h2>
   <div class="col-lg-1">
-  <i class="fas fa-chevron-left seta"></i>
+  <i class="fas fa-chevron-left seta focusable" id="seta_romance_esq" tabindex="6"></i>
   </div>
 
    <div class="col-lg-10" style="margin-left:-4em">
 	    <div class="col-lg-4">
-	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" class="img-responsive container" id="capa anime">
+	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" tabindex="7" class="img-responsive container focusable" id="capa_anime">
 	    </div> 
 	     <div class="col-lg-4">
-	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" class="img-responsive container" id="capa anime">
+	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" tabindex="8" class="img-responsive container focusable" id="capa_anime">
 	    </div>
 	    <div class="col-lg-4">
-	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" class="img-responsive container" id="capa anime">
+	   	  <img alt="capa anime" style="padding:.5em;" src="images/Anime1.png" tabindex="9" class="img-responsive container focusable" id="capa_anime">
 	    </div> 
    </div>
 	  
    <div class="col-lg-1">
-	  <i class="fas fa-chevron-right seta"></i>
+	  <i class="fas fa-chevron-right seta focusable"  id="seta_romance_dir" tabindex="10"></i>
    </div>
 
 </div>
   
 
-<script src="js/main.js"></script>
+
 <script src="https://kit.fontawesome.com/22a79d3aa1.js" crossorigin="anonymous"></script>
 </body>
 </html>

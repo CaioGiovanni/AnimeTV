@@ -54,7 +54,7 @@ Detalhes.handleKeyDownEvents = function () {
     		break;
     		break;
     	case tvKey.DOWN: //DOWN arrow
-    		console.log("LEFT");
+    		console.log("DOWN");
         	if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 2)) {
         		moveBackward(actualFocused);
         	}

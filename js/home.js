@@ -1,25 +1,25 @@
-var Main = {};
+var Home = {};
 var elems;
 var actualFocused;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
-Main.onLoad = function () {
-	console.log("Main.onLoad()");
+Home.onLoad = function () {
+	console.log("Home.onLoad()");
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
 	// setup handler to key events
-	Main.handleKeyDownEvents();
+	Home.handleKeyDownEvents();
 };
 
 // called when application has closed
-Main.onUnload = function () {
-	console.log("Main.onUnload()");
+Home.onUnload = function () {
+	console.log("Home.onUnload()");
 };
 
 // handle all keydown events triggered through remote control.
-Main.handleKeyDownEvents = function () {
+Home.handleKeyDownEvents = function () {
 
 	// add eventListener for keydown
     document.addEventListener('keydown', function(e) {
@@ -27,46 +27,70 @@ Main.handleKeyDownEvents = function () {
     	switch(e.keyCode){
     	case tvKey.LEFT: //LEFT arrow
         	console.log("LEFT");
-        	if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 2)) {
+        	
+        	if (!(actualFocused==2 || actualFocused==6)) {
         		moveBackward(actualFocused);
         	}
+        	
+        	
     		break;
+    		
     	case tvKey.UP: //UP arrow
     		console.log("UP");
-    		if (!(actualFocused == 0)) {
-    			if (actualFocused == 3) {
-    				moveBackward(2);
-    			}
-    			else {
-    				moveBackward(actualFocused);	
-    			}
+    		if (actualFocused >5) {
+    			elems[2].focus();
+	        	actualFocused = 2;
+        	}
+    		else if (1<actualFocused <5) {
+    			elems[0].focus();
+	        	actualFocused = 0;
         	}
     		break;
     	case tvKey.RIGHT: //RIGHT arrow
     		console.log("RIGHT");
-    		if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 4)) {
+    		
+    		if (actualFocused < 5 && actualFocused!=1) {
+        		
         		moveNext(actualFocused);
         	}
+    		else if (actualFocused >= 6 && actualFocused!=10) {
+        		
+        		moveNext(actualFocused);
+        	}
+    		
+    		
     		break;
     	case tvKey.DOWN: //DOWN arrow
     		console.log("DOWN");
-    		if (!(actualFocused == 2 || actualFocused == 3)) {
-        		moveNext(actualFocused);
+    		
+    		if (actualFocused<=1) {
+				moveNext(actualFocused);
+				elems[2].focus();
+	        	actualFocused = 2;
+
+	    		
         	}
+    		else if(2<actualFocused<=5){
+    			elems[6].focus();
+	        	actualFocused = 6;
+    			
+    		}
     		break;
     	case tvKey.ENTER: //OK button
     		console.log("OK");
-			if (actualFocused == 2) {
-				window.location.replace("home.html");
+			if (actualFocused == 0) {
+				window.location.replace("lista.html");
 			}
-			if (actualFocused == 3) {
-				window.location.replace("cadastro.html");
+			else if (actualFocused == 1) {
+				//pesquisa
+				
 			}
+			else if(actualFocused >=2){
+				window.location.replace("detalhes.html");
+			}
+			
     		break;
-    	case tvKey.RETURN: //RETURN button
-    		console.log("RETURN");
-    		window.location.replace("index.html");
-    		break;
+    	
     	default:
     		console.log("Key code : " + e.keyCode);
     		break;
@@ -75,8 +99,8 @@ Main.handleKeyDownEvents = function () {
 };
 
 // binding some events
-window.onload = Main.onLoad;
-window.onunload = Main.onUnload;
+window.onload = Home.onLoad;
+window.onunload = Home.onUnload;
 
 /*********************************************** Player *************************************************/
 
