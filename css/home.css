@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body  {
-    background:#8D46B8;    
+    background:#151515;    
   	font-family: sans-serif;
   	
 }
@@ -19,7 +19,7 @@ body  {
 }
 
 #divBusca{
-  background-color:yellow;
+  background-color:white;
   border:solid 2px #5F9EA0;
   border-radius:10px;
   width:600px;
@@ -137,7 +137,8 @@ button {
 
 
 :focus {
-	outline: 10px solid white;
+	outline: 10px solid red;
+	transition:.5s;
 }
 
 

@@ -52,16 +52,17 @@ Detalhes.handleKeyDownEvents = function () {
         		moveNext(actualFocused);
         	}
     		break;
-    		break;
+    		
     	case tvKey.DOWN: //DOWN arrow
     		console.log("DOWN");
         	if (!(actualFocused == 0 || actualFocused == 1 || actualFocused == 2)) {
         		moveBackward(actualFocused);
         	}
+        	break;
     	case tvKey.ENTER: //OK button
     		console.log("OK");
     		if (actualFocused == 0) {
-				/*add lista*/
+    			window.location.replace("lista.html");
 			}
     		if (actualFocused == 1) {
 				window.location.replace("episodios.html");

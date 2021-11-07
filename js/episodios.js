@@ -61,7 +61,7 @@ Episodios.handleKeyDownEvents = function () {
     	case tvKey.ENTER: //OK button
     		console.log("OK");
     		if (actualFocused == 0) {
-    			//add lista
+    			window.location.replace("lista.html");
     			break;
 			}
     		else{

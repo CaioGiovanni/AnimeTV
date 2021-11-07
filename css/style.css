@@ -1,5 +1,5 @@
 body  {
-    background:#8D46B8;    
+   background:#151515;    
   	font-family: sans-serif;
   	width:100%;
   	overflow-x:hidden;
@@ -49,12 +49,12 @@ h2 {
     font-size:3.5em;margin:10px 10px 20px 10px;color:#FFF;
 }
 h1 {
-    font-size:4em;margin:10px 10px 20px 10px;color:#FFF;
+    font-size:3em;margin:10px 10px 20px 10px;color:#FFF;
     font-weight:900;
 }
 
 h3 {
-    font-size:3.5em;margin:10px 10px 20px 10px;color:#FFF;
+    font-size:2.5em;margin:10px 10px 20px 10px;color:#FFF;
 }
 
 h1#tittle {
@@ -83,22 +83,24 @@ p {
 }
 
 form {
-	font-size:4.0em;color:#FFF;
+	margin-top:150px;
 }
 
 input {
-	margin-top: 40px;
-	width: 820.835971723015px;
-	height: 51.999999999999886px;
+	
+	width: 950px;
+	height: 65px;
 	font-family: Arial;
 	font-size: 36.0px;
 	font-weight: 400;
-	color: #FFFFFF;
+	color: white;
 	border-top: 5.0px solid #FFFFFF;
 	border-right: 5.0px solid #FFFFFF;
 	border-bottom: 5.0px solid #FFFFFF;
 	border-left: 5.0px solid #FFFFFF;
-	padding: 10px;
+	padding: 20px;
+	border-radius:5px;
+	margin-top:30px
 }
 .sticky {
   position: sticky;
@@ -150,7 +152,7 @@ button {
 	font-weight: 400;
 	text-align: center;
 	color: yellow;
-	background-color: black;
+	background-color: purple;
 	border-top: 1.0px solid #333233;
 	border-right: 1.0px solid #333233;
 	border-bottom: 1.0px solid #333233;
