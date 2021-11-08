@@ -1,6 +1,7 @@
 var Main = {};
 var elems;
 var actualFocused;
+var t = tau.animation.target;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -12,7 +13,7 @@ Main.onLoad = function () {
 	try {
 		var t = tau.animation.target;
 	    //,blueBox = document.getElementById('cadastro');
-		t('.login-container').tween('swing', 1000);
+		t('.login-container').tween('fadeInUp', 500);
 		//t('#cadastro').tween({rotateZ: 120}, 1000); /* Transform */
 		/* CSS property */
 		//t('#cadastro').tween({backgroundColor: 'red', border: '10px 10px 10px 3px white'}, 1000);

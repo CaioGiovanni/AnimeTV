@@ -37,13 +37,11 @@ Home.handleKeyDownEvents = function () {
     		
     	case tvKey.UP: //UP arrow
     		console.log("UP");
-    		if (actualFocused >5) {
-    			elems[2].focus();
-	        	actualFocused = 2;
+    		if (actualFocused == 5) {
+    			moveNext(1);
         	}
-    		else if (1<actualFocused <5) {
-    			elems[0].focus();
-	        	actualFocused = 0;
+    		else if (actualFocused < 5) {
+    			moveBackward(actualFocused)
         	}
     		break;
     	case tvKey.RIGHT: //RIGHT arrow
@@ -65,12 +63,9 @@ Home.handleKeyDownEvents = function () {
     		
     		if (actualFocused<=1) {
 				moveNext(actualFocused);
-				elems[2].focus();
-	        	actualFocused = 2;
-
 	    		
         	}
-    		else if(2<actualFocused<=5){
+    		else if (actualFocused <= 5 && actualFocused >= 2){
     			elems[6].focus();
 	        	actualFocused = 6;
     			
@@ -82,15 +77,18 @@ Home.handleKeyDownEvents = function () {
 				window.location.replace("lista.html");
 			}
 			else if (actualFocused == 1) {
-				//pesquisa
-				
+				window.location.replace("busca.html");	
 			}
-			else if(actualFocused >=2){
+			else if (actualFocused >=2) {
 				window.location.replace("detalhes.html");
-			}
-			
+			}			
     		break;
-    	
+    		
+    	case tvKey.RETURN: //RETURN button
+    		console.log("RETURN");
+    		window.location.replace("index.html");
+    		break;
+    		
     	default:
     		console.log("Key code : " + e.keyCode);
     		break;

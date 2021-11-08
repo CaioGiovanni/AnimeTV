@@ -1,6 +1,7 @@
 var Main = {};
 var elems;
 var actualFocused;
+var t = tau.animation.target;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -51,16 +52,12 @@ Main.handleKeyDownEvents = function () {
     		break;
     	case tvKey.ENTER: //OK button
     		console.log("OK");
-			if (actualFocused == 2) {
-				window.location.replace("busca.html");
-			}
-			if (actualFocused == 3) {
-				window.location.replace("cadastro.html");
-			}
+    		t(document.activeElement).tween('fadeInUp', 500);
+			window.location.replace("detalhes.html");
     		break;
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
-    		window.location.replace("index.html");
+    		window.location.replace("home.html");
     		break;
     	default:
     		console.log("Key code : " + e.keyCode);

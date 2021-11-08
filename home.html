@@ -11,12 +11,12 @@
 	<link rel="stylesheet" type="text/css" href="css/home.css"/>
 	
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  	<script src="lib/tau/animation/tau.animation.min.js" type="text/javascript"></script>
   	<script language="javascript" type="text/javascript" src="js/keyTizen.js"></script>
   	<!-- Material Icons CSS -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- Keyboard JS -->
 	
-	<script src="js/keyboard.js"></script>
     <script src="js/home.js"></script>
 </head>
 
@@ -27,11 +27,11 @@
 	   <img alt="AnimeTV" id="logo" src="images/AnimeTV_Logo.png"></img>
 	</div>
 	<div class="col-lg-4" style="margin-top: -40px;">
-  	<button type="submit" id="btn_add_lista" class="focusable" tabindex="0">Adicionados a Lista</button>
+  		<button type="submit" id="btn_add_lista" class="focusable" tabindex="0">Adicionados a Lista</button>
   	</div>
 	
-	<div class="col-lg-4 " id="divBusca"  >
-	   <input type="text" id="txtBusca" class ="focusable use-keyboard-input" tabindex="1" placeholder="Buscar..."/>
+	<div class="col-lg-4 focusable" id="divBusca" tabindex="1">
+	   <input type="text" id="txtBusca" class ="use-keyboard-input" placeholder="Buscar..."/>
 	   
 	   <i class="fas fa-search"> </i>
 	</div>

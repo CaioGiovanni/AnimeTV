@@ -1,6 +1,7 @@
 var Detalhes = {};
 var elems;
 var actualFocused;
+var t = tau.animation.target;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -64,10 +65,10 @@ Detalhes.handleKeyDownEvents = function () {
     		if (actualFocused == 0) {
     			window.location.replace("lista.html");
 			}
-    		if (actualFocused == 1) {
+    		else if (actualFocused == 1) {
 				window.location.replace("episodios.html");
 			}
-			if (actualFocused == 2) {
+    		else if (actualFocused == 2) {
 				window.location.replace("play.html");
 			}
     		break;
