@@ -12,19 +12,11 @@ Main.onLoad = function () {
 	
 	try {
 		var t = tau.animation.target;
-	    //,blueBox = document.getElementById('cadastro');
 		t('.login-container').tween('fadeInUp', 500);
-		//t('#cadastro').tween({rotateZ: 120}, 1000); /* Transform */
-		/* CSS property */
-		//t('#cadastro').tween({backgroundColor: 'red', border: '10px 10px 10px 3px white'}, 1000);
-		//t('#cadastro').tween('swing', 1000).tween('tada', 1000);
 	}
 	catch (e) {
 		// TODO: handle exception
 	}
-	//t(blueBox);
-	
-	// setup handler to key events
 	Main.handleKeyDownEvents();
 };
 

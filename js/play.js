@@ -1,4 +1,5 @@
 var Main = {};
+const url = 'https://api.aniapi.com/v1/episode?anime_id=500';
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -13,7 +14,7 @@ Main.onLoad = function () {
 	
 	// setup video player
 	Player.init("player");
-	//Player.prepare("http://yourvideourl.mp4"); // <-- set video URL here!
+	//Player.prepare("https://api.aniapi.com/v1/proxy/https%3a%2f%2fcdn2.dreamsub.cc%2ffl%2fcowboy-bebop%2f11%2fSUB_ITA%2f480p%3ftoken%3dAYpZufjvL9sfSiwWkynBoPmuV6USuQdvr2wKiVjsQKJ90TAhPRFuhe5ePq6VTlEy/dreamsub/?host=cdn.dreamsub.cc&referrer=https%3a%2f%2fdreamsub.cc%2fanime%2fcowboy-bebop%2f11"); // <-- set video URL here!
 };
 
 // called when application has closed
@@ -254,6 +255,6 @@ window.onunload = Main.onUnload;
 	
 	if (!window.Player) {
 		window.Player = Player;
-	}	
+	}
 	
 })();

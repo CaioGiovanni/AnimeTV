@@ -10,6 +10,20 @@ Detalhes.onLoad = function () {
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
+	var responseUrl = "https://api.aniapi.com/v1/anime/200";
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		})
+		.then(response => response.json()) 
+		.then(json => {console.log(json);
+		console.log(json.data);
+		console.log(json.data.titles); 
+		document.getElementById("titulo-anime").innerHTML = json.data.titles.en;
+		document.getElementById("descricao").innerHTML = json.data.descriptions.en
+		document.getElementById("categoria").innerHTML = json.data.genres;
+		});	
+	
 	// setup handler to key events
 	Detalhes.handleKeyDownEvents();
 };
@@ -108,3 +122,18 @@ function moveBackward(tidx) {
         }
     }
 }
+
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};

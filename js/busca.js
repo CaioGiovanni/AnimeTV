@@ -10,6 +10,18 @@ Main.onLoad = function () {
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
+	var responseUrl = "https://api.aniapi.com/v1/anime/200";
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		})
+		.then(response => response.json()) 
+		.then(json => {console.log(json);
+		console.log(json.data);
+		console.log(json.data.titles); 
+		document.getElementById("capa_anime1").src = json.data.banner_image;
+		});	
+	
 	// setup handler to key events
 	Main.handleKeyDownEvents();
 };
