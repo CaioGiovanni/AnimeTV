@@ -19,6 +19,7 @@ Detalhes.onLoad = function () {
 		.then(json => {console.log(json);
 		console.log(json.data);
 		console.log(json.data.titles); 
+		document.getElementById("capa_anime").src = json.data.cover_image;
 		document.getElementById("titulo-anime").innerHTML = json.data.titles.en;
 		document.getElementById("descricao").innerHTML = json.data.descriptions.en
 		document.getElementById("categoria").innerHTML = json.data.genres;

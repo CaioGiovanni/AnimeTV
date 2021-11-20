@@ -12,7 +12,20 @@ Home.onLoad = function () {
 	// setup handler to key events
 	Home.handleKeyDownEvents();
 };
-
+var responseUrl = "https://api.aniapi.com/v1/anime/10";
+fetch(responseUrl, {
+	  method: "GET",
+	  headers: {"Content-type": "application/json;charset=UTF-8"}
+	})
+	.then(response => response.json()) 
+	.then(json => {console.log(json);
+	console.log(json.data);
+	document.getElementById("capa_anime1").src = json.data.cover_image;
+	document.getElementById("capa_anime2").src = json.data.cover_image;
+	document.getElementById("capa_anime3").src = json.data.cover_image;
+	
+	
+	});	
 // called when application has closed
 Home.onUnload = function () {
 	console.log("Home.onUnload()");

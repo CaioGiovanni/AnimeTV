@@ -1,5 +1,5 @@
 var Main = {};
-const url = 'https://api.aniapi.com/v1/episode?anime_id=500';
+
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -16,6 +16,18 @@ Main.onLoad = function () {
 	Player.init("player");
 	//Player.prepare("https://api.aniapi.com/v1/proxy/https%3a%2f%2fcdn2.dreamsub.cc%2ffl%2fcowboy-bebop%2f11%2fSUB_ITA%2f480p%3ftoken%3dAYpZufjvL9sfSiwWkynBoPmuV6USuQdvr2wKiVjsQKJ90TAhPRFuhe5ePq6VTlEy/dreamsub/?host=cdn.dreamsub.cc&referrer=https%3a%2f%2fdreamsub.cc%2fanime%2fcowboy-bebop%2f11"); // <-- set video URL here!
 };
+var responseUrl = "https://api.aniapi.com/v1/episode/485";
+fetch(responseUrl, {
+	  method: "GET",
+	  headers: {"Content-type": "application/json;charset=UTF-8"}
+	})
+	.then(response => response.json()) 
+	.then(json => {console.log(json);
+	console.log(json.data);
+	document.getElementById("player").src = json.data.video;
+	
+	
+	});	
 
 // called when application has closed
 Main.onUnload = function () {

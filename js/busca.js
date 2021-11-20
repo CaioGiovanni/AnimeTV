@@ -19,7 +19,7 @@ Main.onLoad = function () {
 		.then(json => {console.log(json);
 		console.log(json.data);
 		console.log(json.data.titles); 
-		document.getElementById("capa_anime1").src = json.data.banner_image;
+		document.getElementById("capa_anime1").src = json.data.cover_image;
 		});	
 	
 	// setup handler to key events
