@@ -2,6 +2,8 @@ var Detalhes = {};
 var elems;
 var actualFocused;
 var t = tau.animation.target;
+var data;
+var list;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -10,19 +12,19 @@ Detalhes.onLoad = function () {
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
-	var responseUrl = "https://api.aniapi.com/v1/anime/200";
+	var responseUrl = "https://api.aniapi.com/v1/anime/100";
 	fetch(responseUrl, {
 		  method: "GET",
 		  headers: {"Content-type": "application/json;charset=UTF-8"}
 		})
 		.then(response => response.json()) 
 		.then(json => {console.log(json);
-		console.log(json.data);
-		console.log(json.data.titles); 
-		document.getElementById("capa_anime").src = json.data.cover_image;
-		document.getElementById("titulo-anime").innerHTML = json.data.titles.en;
-		document.getElementById("descricao").innerHTML = json.data.descriptions.en
-		document.getElementById("categoria").innerHTML = json.data.genres;
+		console.log(json.data); 
+		data = json.data;
+		document.getElementById("capa_anime").src = data.cover_image;
+		document.getElementById("titulo-anime").innerHTML = data.titles.en;
+		document.getElementById("descricao").innerHTML = data.descriptions.en
+		document.getElementById("categoria").innerHTML = data.genres;
 		});	
 	
 	// setup handler to key events
@@ -78,7 +80,10 @@ Detalhes.handleKeyDownEvents = function () {
     	case tvKey.ENTER: //OK button
     		console.log("OK");
     		if (actualFocused == 0) {
-    			window.location.replace("lista.html");
+    			createListFile();
+    			getListFile();
+    			console.log(list);
+    			//window.location.replace("lista.html");
 			}
     		else if (actualFocused == 1) {
 				window.location.replace("episodios.html");
@@ -138,3 +143,51 @@ var getJSON = function(url, callback) {
     };
     xhr.send();
 };
+
+function createListFile () {
+	var successCallback = function(newPath) {
+	    console.log('New directory has been created: ' + newPath);
+	}
+	var errorCallback = function(error) {
+	    console.log(error);
+	}	
+	tizen.filesystem.createDirectory('documents/AnimeTV',successCallback, errorCallback);
+	
+	try {
+		getListFile();
+	} catch (e) {}	
+	
+	const send = data.id;
+	console.log(list);
+	
+	var fileHandleWrite = tizen.filesystem.openFile('documents/AnimeTV/list', 'w');
+	console.log('File opened for writing');
+	if (list != undefined) {
+		send = list + ", " + data.id;
+	}
+	console.log(send);
+	var blobToWrite = new Blob([send]);
+	fileHandleWrite.writeBlob(blobToWrite);
+	fileHandleWrite.close();
+} 
+
+function getListFile () {
+	var fileHandleRead = tizen.filesystem.openFile('documents/AnimeTV/list', 'r');
+	console.log('File opened for reading');
+	var fileContents = fileHandleRead.readBlob();
+	console.log('Blob object:');
+	console.log(fileContents);
+	/* FileReader is a W3C API class, not related to webapi-plugins */
+	/* and is capable of extracting blob contents */
+	var reader = new FileReader();
+	/* Event fires after the blob has been read/loaded */
+	reader.addEventListener('loadend', function(contents)
+	{
+	   const text = contents.srcElement.result;
+	   console.log('File contents: ' + text);
+	   list = text;
+	});
+	/* Start reading the blob as text */
+	reader.readAsText(fileContents);
+	fileHandleRead.close();
+}

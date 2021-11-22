@@ -2,6 +2,8 @@ var Main = {};
 var elems;
 var actualFocused;
 var t = tau.animation.target;
+var newPath = 'documents/AnimeTV';
+var loginCredentials;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -64,11 +66,12 @@ Main.handleKeyDownEvents = function () {
     	case tvKey.ENTER: //OK button
     		console.log("OK");
 			if (actualFocused == 2) {
+				createLoginCreds();
 				window.location.replace("home.html");
-				//window.location.href="#two";
 			}
 			if (actualFocused == 3) {
-				window.location.replace("cadastro.html");
+				getLoginCreds();
+				//window.location.replace("cadastro.html");
 			}
     		break;
     	case tvKey.RETURN: //RETURN button
@@ -109,3 +112,51 @@ function moveBackward(tidx) {
     }
     console.log(actualFocused);
 }
+
+/*********************************************** Login create path *************************************************/
+
+function createLoginCreds () {
+	var successCallback = function(newPath) {
+	    console.log('New directory has been created: ' + newPath);
+	}
+	var errorCallback = function(error) {
+	    console.log(error);
+	}
+	tizen.filesystem.createDirectory('documents/AnimeTV',successCallback, errorCallback);
+	
+	var fileHandleWrite = tizen.filesystem.openFile('documents/AnimeTV/loginCredentials', 'w');
+	console.log('File opened for writing');
+	var blobToWrite = new Blob(['Caio, 012345']);
+	fileHandleWrite.writeBlob(blobToWrite);
+	fileHandleWrite.close();
+} 
+
+function getLoginCreds () {
+	var fileHandleRead = tizen.filesystem.openFile('documents/AnimeTV/loginCredentials', 'r');
+	console.log('File opened for reading');
+	var fileContents = fileHandleRead.readBlob();
+	console.log('Blob object:');
+	console.log(fileContents);
+	/* FileReader is a W3C API class, not related to webapi-plugins */
+	/* and is capable of extracting blob contents */
+	var reader = new FileReader();
+	/* Event fires after the blob has been read/loaded */
+	reader.addEventListener('loadend', function(contents)
+	{
+	   const text = contents.srcElement.result;
+	   console.log('File contents: ' + text);
+	   loginCredentials = text;
+	});
+	/* Start reading the blob as text */
+	reader.readAsText(fileContents);
+	fileHandleRead.close();
+}
+
+/*var fullPath = 'documents/subDir'
+var callback = function(modifiedDirectory) {
+    console.log('deleteDirectory() is successfully done. Modified (parent) directory: ' + modifiedDirectory);
+}
+var errorCallback = function(error) {
+    console.log(error);
+}
+tizen.filesystem.deleteDirectory(fullPath, true, callback, errorCallback);*/
