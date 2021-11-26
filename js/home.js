@@ -1,8 +1,9 @@
 var Home = {};
 var elems;
 var actualFocused;
+var teste;
 //var Player = document.getElementById('player');
-
+const main = document.getElementById('main');
 //called when application was loaded
 Home.onLoad = function () {
 	console.log("Home.onLoad()");
@@ -12,24 +13,81 @@ Home.onLoad = function () {
 	// setup handler to key events
 	Home.handleKeyDownEvents();
 };
-var responseUrl = "https://api.aniapi.com/v1/anime/10";
+
+var responseUrl = "https://api.aniapi.com/v1/anime";
 fetch(responseUrl, {
 	  method: "GET",
 	  headers: {"Content-type": "application/json;charset=UTF-8"}
 	})
 	.then(response => response.json()) 
 	.then(json => {console.log(json);
-	console.log(json.data);
-	document.getElementById("capa_anime1").src = json.data.cover_image;
-	document.getElementById("capa_anime2").src = json.data.cover_image;
-	document.getElementById("capa_anime3").src = json.data.cover_image;
+	console.log(json.data.documents[1].cover_image);
+	document.getElementById("capa_anime1").src = json.data.documents[1].cover_image;
+	teste = json.data.documents;
 	
 	
-	});	
+	
+	});	  
+	
 // called when application has closed
 Home.onUnload = function () {
 	console.log("Home.onUnload()");
 };
+
+
+
+ 
+function showAnimes() {
+	main.innerHTML='';
+	const myJSON = JSON.stringify(teste);
+	document.getElementById("demo").innerHTML = myJSON;
+	for ( var i in teste) {
+		var div = document.createElement('div');
+		
+		main.innerHTML = '<div> <img src="${teste[a].cover_image}"></div>'
+       
+  }
+	
+
+}
+
+/*function showMovies(data) {
+    main.innerHTML = '';
+
+    data.forEach(movie => {
+        const {title, poster_path, vote_average, overview, id} = movie;
+        const movieEl = document.createElement('div');
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+             <img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
+            <div class="movie-info">
+                <h3>${title}</h3>
+                <span class="${getColor(vote_average)}">${vote_average}</span>
+            </div>
+            <div class="overview">
+                <h3>Overview</h3>
+                ${overview}
+                <br/> 
+                <button class="know-more" id="${id}">Know More</button
+            </div>
+        
+        `
+
+        main.appendChild(movieEl);
+
+        document.getElementById(id).addEventListener('click', () => {
+          console.log(id)
+          openNav(movie)
+        })
+    })
+}
+ * 
+ * 
+ * 
+ */
+
+
+ 
 
 // handle all keydown events triggered through remote control.
 Home.handleKeyDownEvents = function () {
