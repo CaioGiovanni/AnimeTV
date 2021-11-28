@@ -24,9 +24,6 @@ fetch(responseUrl, {
 	console.log(json.data.documents[1].cover_image);
 	document.getElementById("capa_anime1").src = json.data.documents[1].cover_image;
 	teste = json.data.documents;
-	
-	
-	
 	});	  
 	
 // called when application has closed
@@ -46,9 +43,7 @@ function showAnimes() {
 		
 		main.innerHTML = '<div> <img src="${teste[a].cover_image}"></div>'
        
-  }
-	
-
+    }
 }
 
 /*function showMovies(data) {

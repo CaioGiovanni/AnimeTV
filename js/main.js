@@ -4,11 +4,17 @@ var actualFocused;
 var t = tau.animation.target;
 var newPath = 'documents/AnimeTV';
 var loginCredentials;
+var bool;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
 Main.onLoad = function () {
 	console.log("Main.onLoad()");
+	getLoginCreds();
+	console.log(loginCredentials);
+	if (loginCredentials != undefined) {
+		window.location.replace("home.html");
+	}
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
@@ -66,11 +72,22 @@ Main.handleKeyDownEvents = function () {
     	case tvKey.ENTER: //OK button
     		console.log("OK");
 			if (actualFocused == 2) {
-				createLoginCreds();
-				window.location.replace("home.html");
+				const x = document.getElementById('formGroupExampleInput').value;
+				const y = document.getElementById('formGroupExampleInput2').value;
+				login(x, y);
+				setTimeout(()=>{
+					console.log(bool);
+					if (bool == true) {
+						//getLoginCreds();
+						window.location.replace("home.html");
+					}
+					else {
+						console.log("Invalid login.");
+					}
+				},10000);
 			}
 			if (actualFocused == 3) {
-				getLoginCreds();
+				//getLoginCreds();
 				//window.location.replace("cadastro.html");
 			}
     		break;
@@ -95,6 +112,7 @@ function moveNext(tidx) {
     for (var i=elems.length; i--;) {
         var tidx2 = elems[i].getAttribute('tabindex');
         if (tidx2 == (tidx + 1)) {
+        	blurActualElement();
         	elems[i].focus();
         	actualFocused = tidx + 1;
         }
@@ -106,6 +124,7 @@ function moveBackward(tidx) {
     for (var i=elems.length; i--;) {
         var tidx2 = elems[i].getAttribute('tabindex');
         if (tidx2 == (tidx - 1)) {
+        	blurActualElement();
         	elems[i].focus();
         	actualFocused = tidx - 1;
         }
@@ -113,9 +132,18 @@ function moveBackward(tidx) {
     console.log(actualFocused);
 }
 
+function blurActualElement () {
+	for (var i=elems.length; i--;) {
+        var tidx2 = elems[i].getAttribute('tabindex');
+        if (tidx2 == actualFocused) {
+        	elems[i].blur();
+        }
+    }
+}
+
 /*********************************************** Login create path *************************************************/
 
-function createLoginCreds () {
+function createLoginCreds (x, y) {
 	var successCallback = function(newPath) {
 	    console.log('New directory has been created: ' + newPath);
 	}
@@ -126,7 +154,9 @@ function createLoginCreds () {
 	
 	var fileHandleWrite = tizen.filesystem.openFile('documents/AnimeTV/loginCredentials', 'w');
 	console.log('File opened for writing');
-	var blobToWrite = new Blob(['Caio, 012345']);
+	const creds = x + " , " + y;
+	console.log(creds);
+	var blobToWrite = new Blob([creds]);
 	fileHandleWrite.writeBlob(blobToWrite);
 	fileHandleWrite.close();
 } 
@@ -152,11 +182,25 @@ function getLoginCreds () {
 	fileHandleRead.close();
 }
 
-/*var fullPath = 'documents/subDir'
-var callback = function(modifiedDirectory) {
-    console.log('deleteDirectory() is successfully done. Modified (parent) directory: ' + modifiedDirectory);
+function login(x, y) {
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+			if (json.password == y) {
+				createLoginCreds(x, y)
+				bool = true;
+			}
+			else {
+				bool = false;
+			}
+		});	 
 }
-var errorCallback = function(error) {
-    console.log(error);
-}
-tizen.filesystem.deleteDirectory(fullPath, true, callback, errorCallback);*/
+
+
+
+
+
+

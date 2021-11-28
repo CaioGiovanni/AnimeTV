@@ -82,7 +82,6 @@ Detalhes.handleKeyDownEvents = function () {
     		if (actualFocused == 0) {
     			createListFile();
     			getListFile();
-    			console.log(list);
     			//window.location.replace("lista.html");
 			}
     		else if (actualFocused == 1) {
