@@ -6,11 +6,14 @@ var data;
 var list;
 var history;
 var detailedAnime = 5;
+//var detailedAnime = localStorage.getItem("detailedAnime");
+
 //var Player = document.getElementById('player');
 
 //called when application was loaded
 Detalhes.onLoad = function () {
 	console.log("Detalhes.onLoad()");
+	localStorage.setItem("detailedAnime", detailedAnime);
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
@@ -90,7 +93,6 @@ Detalhes.handleKeyDownEvents = function () {
 			}
     		else if (actualFocused == 2) {
     			getLoginCreds(addToHistory);
-    			localStorage.setItem("detailedAnime", detailedAnime);
     			setTimeout(()=>{
     				window.location.replace("play.html");
     			},3000);
@@ -169,7 +171,6 @@ function getLoginCreds (callback) {
 	/* Start reading the blob as text */
 	reader.readAsText(fileContents);
 	fileHandleRead.close();
-	
 }
 
 function addToList(x) {

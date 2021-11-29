@@ -119,8 +119,8 @@ c1qA9ZLysw==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>y+nobmSxP7TY0lJdqKqeKSFmzusPUjAPQ78QqmS6ore3u6b7HBSvh8aCk+U2lowUq+2bXVcss7Qy
-sK7nELfsdA==</DigestValue>
+<DigestValue>qHy+b0NqaodxNqmAd56M7bEsPnDl+Up6Vy9c0BscffdmCSLkXTgI0GcY1tIZN0dH9SYCFgtkS/dN
+oJhs/5wMEA==</DigestValue>
 </Reference>
 <Reference URI="busca.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -219,8 +219,8 @@ u1tOis430g==</DigestValue>
 </Reference>
 <Reference URI="js%2Fdetalhes.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Q0EZwvHks40Qy0yRwO5e0zQbfL0A2FayRz0cjsObq0p32HO0Pjgv5zkrGN7FE781o/mT53vhbdgH
-PI6m8dCF6w==</DigestValue>
+<DigestValue>205//0NmP6FO+kf7oCMU8hWryck0dtbBWmr2tajF8tuTobTJMOg7QFO+AXDIWGZoVMExulA5IK6o
+3G7NMAQ8Og==</DigestValue>
 </Reference>
 <Reference URI="js%2Fepisodios.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -239,8 +239,8 @@ Oyom3e/0fw==</DigestValue>
 </Reference>
 <Reference URI="js%2Flista.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>xa03VN8FsCO8XgU4fG/VJ5lFKfUKU3AVgs29QM5ircQsyB7viXRrAPgHqez3DDni1RUkdKX1UWKX
-v4pUmwNw5Q==</DigestValue>
+<DigestValue>fE4Uu+WNygPsScCKARv+JX4gST+TYF0Y19j0Yfs0dPP9Lc1Ete+iNTeSu4CpOmBPxAxHGPP+G+4C
+ND09HPRn6A==</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -249,8 +249,8 @@ DJV03Nnz9Q==</DigestValue>
 </Reference>
 <Reference URI="js%2Fplay.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>2HAai1N+6yhX8+emwLC8Q95nHusan0tWrFPaJH+l9BApwYVZ/+iHq9wBFft5DbcXLNNV1Aii7RB4
-pDDBGGQyVw==</DigestValue>
+<DigestValue>pIlH0CE9q/vua5d54blNUs1A4mIHgPXNLR0mMRYvFC7sO1Es5WO1aVQghEKgzZOJstW+A8QHmrzj
+x4LP096Vfw==</DigestValue>
 </Reference>
 <Reference URI="keyboard.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2227,9 +2227,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-jA98pcQenvHMYl2ckyV+ByK8/E0kKvih4PL2brZW0tuPjZ2lpAXilDJAcKKx8RWjH4GuzTtjqMTl
-j4XBi5bkrh5rl5ag29U0+pnn3XU6b7eA6lSo2AClwsBalt54OyPmmxcWS1yVs1MhYCk6n8w9P7Up
-BVHHneuiS+IRaZrJ+k0=
+XFXSQ+Fy2JNr09Dj8K3EB1tWF9rZMOhOerFChMHXEHetK2I8buJmeshOmsJaJb2DqYId2hDN7v2a
+4K8Pj8F/Nync9jWs8czcc+Ay5foI4l3PmuXbPzHNFWCYm8XOeJkZ1EG8femvgk90xpl3Ja6Z5CB1
+mKk8IzApooVG6QfKYeg=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

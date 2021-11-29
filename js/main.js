@@ -13,9 +13,10 @@ Main.onLoad = function () {
 	getLoginCreds();
 	setTimeout(()=>{
 		console.log(loginCredentials);
-		if (loginCredentials != undefined) {
-			window.location.replace("home.html");
-		}
+	//  REMOVE THIS COMMENT TO AUTO VERIFY LOGIN
+	//	if (loginCredentials != undefined) {
+	//		window.location.replace("home.html");
+	//	}
 	},2000);
 	
 	elems = document.getElementsByClassName('focusable');

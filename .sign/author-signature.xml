@@ -214,8 +214,8 @@ u1tOis430g==</DigestValue>
 </Reference>
 <Reference URI="js%2Fdetalhes.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Q0EZwvHks40Qy0yRwO5e0zQbfL0A2FayRz0cjsObq0p32HO0Pjgv5zkrGN7FE781o/mT53vhbdgH
-PI6m8dCF6w==</DigestValue>
+<DigestValue>205//0NmP6FO+kf7oCMU8hWryck0dtbBWmr2tajF8tuTobTJMOg7QFO+AXDIWGZoVMExulA5IK6o
+3G7NMAQ8Og==</DigestValue>
 </Reference>
 <Reference URI="js%2Fepisodios.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -234,8 +234,8 @@ Oyom3e/0fw==</DigestValue>
 </Reference>
 <Reference URI="js%2Flista.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>xa03VN8FsCO8XgU4fG/VJ5lFKfUKU3AVgs29QM5ircQsyB7viXRrAPgHqez3DDni1RUkdKX1UWKX
-v4pUmwNw5Q==</DigestValue>
+<DigestValue>fE4Uu+WNygPsScCKARv+JX4gST+TYF0Y19j0Yfs0dPP9Lc1Ete+iNTeSu4CpOmBPxAxHGPP+G+4C
+ND09HPRn6A==</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -244,8 +244,8 @@ DJV03Nnz9Q==</DigestValue>
 </Reference>
 <Reference URI="js%2Fplay.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>2HAai1N+6yhX8+emwLC8Q95nHusan0tWrFPaJH+l9BApwYVZ/+iHq9wBFft5DbcXLNNV1Aii7RB4
-pDDBGGQyVw==</DigestValue>
+<DigestValue>pIlH0CE9q/vua5d54blNUs1A4mIHgPXNLR0mMRYvFC7sO1Es5WO1aVQghEKgzZOJstW+A8QHmrzj
+x4LP096Vfw==</DigestValue>
 </Reference>
 <Reference URI="keyboard.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2222,9 +2222,9 @@ QY10fG1EWQ==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-MDMYpjQk4xplN5qW8uOakwykYqn2UccqWpp9ZZXSRRsFHh3WZlAVJpaFJkxOSmslj/e6bCAi0CDo
-CD5/3DVHPP6qvxHXI8LC7QwaVspn3/fjZt/lKraedJ0TLLaPOEE1bN73bMOreVc6t7vubeiltKJr
-B2QDAOlzUwS9SA377ok=
+UIB3mRCI6wLZ2Qq3ihQUOE1KmMh/F3LKXq6jh6dmTellGla883ZsMj0Y9JwE5S9gZm5A5b4YGm8h
+FuojHiFEdRjHZRFM91Y+Zd74Nb7yE/LxANHHisnvx/HVyKLqSaV64alTO+0AElSaukdLNs2PHevq
+nm4U9f7Uvm8xCszSZgc=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

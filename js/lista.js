@@ -91,3 +91,39 @@ function moveBackward(tidx) {
     }
     console.log(actualFocused);
 }
+
+
+function getLoginCreds (callback) {
+	var fileHandleRead = tizen.filesystem.openFile('documents/AnimeTV/loginCredentials', 'r');
+	console.log('File opened for reading');
+	var fileContents = fileHandleRead.readBlob();
+	console.log('Blob object:');
+	console.log(fileContents);
+	/* FileReader is a W3C API class, not related to webapi-plugins */
+	/* and is capable of extracting blob contents */
+	var reader = new FileReader();
+	/* Event fires after the blob has been read/loaded */
+	reader.addEventListener('loadend', function(contents)
+	{
+	   const text = contents.srcElement.result;
+	   console.log('File contents: ' + text);
+	   loginCredentials = text;
+	   const x = loginCredentials.split(',')[0];
+	   callback(x);
+	});
+	/* Start reading the blob as text */
+	reader.readAsText(fileContents);
+	fileHandleRead.close();
+}
+
+function getList(x) {
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+			console.log(json.list);
+			list = json.list;
+		});	 
+}
