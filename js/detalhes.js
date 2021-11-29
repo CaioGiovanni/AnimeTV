@@ -4,6 +4,8 @@ var actualFocused;
 var t = tau.animation.target;
 var data;
 var list;
+var history;
+var detailedAnime = 5;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -12,7 +14,7 @@ Detalhes.onLoad = function () {
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
-	var responseUrl = "https://api.aniapi.com/v1/anime/100";
+	var responseUrl = "https://api.aniapi.com/v1/anime/" + detailedAnime;
 	fetch(responseUrl, {
 		  method: "GET",
 		  headers: {"Content-type": "application/json;charset=UTF-8"}
@@ -25,7 +27,7 @@ Detalhes.onLoad = function () {
 		document.getElementById("titulo-anime").innerHTML = data.titles.en;
 		document.getElementById("descricao").innerHTML = data.descriptions.en
 		document.getElementById("categoria").innerHTML = data.genres;
-		});	
+		});
 	
 	// setup handler to key events
 	Detalhes.handleKeyDownEvents();
@@ -80,15 +82,18 @@ Detalhes.handleKeyDownEvents = function () {
     	case tvKey.ENTER: //OK button
     		console.log("OK");
     		if (actualFocused == 0) {
-    			createListFile();
-    			getListFile();
+    			getLoginCreds(addToList);
     			//window.location.replace("lista.html");
 			}
     		else if (actualFocused == 1) {
 				window.location.replace("episodios.html");
 			}
     		else if (actualFocused == 2) {
-				window.location.replace("play.html");
+    			getLoginCreds(addToHistory);
+    			localStorage.setItem("detailedAnime", detailedAnime);
+    			setTimeout(()=>{
+    				window.location.replace("play.html");
+    			},3000);
 			}
     		break;
     	case tvKey.RETURN: //RETURN button
@@ -143,35 +148,8 @@ var getJSON = function(url, callback) {
     xhr.send();
 };
 
-function createListFile () {
-	var successCallback = function(newPath) {
-	    console.log('New directory has been created: ' + newPath);
-	}
-	var errorCallback = function(error) {
-	    console.log(error);
-	}	
-	tizen.filesystem.createDirectory('documents/AnimeTV',successCallback, errorCallback);
-	
-	try {
-		getListFile();
-	} catch (e) {}	
-	
-	const send = data.id;
-	console.log(list);
-	
-	var fileHandleWrite = tizen.filesystem.openFile('documents/AnimeTV/list', 'w');
-	console.log('File opened for writing');
-	if (list != undefined) {
-		send = list + ", " + data.id;
-	}
-	console.log(send);
-	var blobToWrite = new Blob([send]);
-	fileHandleWrite.writeBlob(blobToWrite);
-	fileHandleWrite.close();
-} 
-
-function getListFile () {
-	var fileHandleRead = tizen.filesystem.openFile('documents/AnimeTV/list', 'r');
+function getLoginCreds (callback) {
+	var fileHandleRead = tizen.filesystem.openFile('documents/AnimeTV/loginCredentials', 'r');
 	console.log('File opened for reading');
 	var fileContents = fileHandleRead.readBlob();
 	console.log('Blob object:');
@@ -184,9 +162,78 @@ function getListFile () {
 	{
 	   const text = contents.srcElement.result;
 	   console.log('File contents: ' + text);
-	   list = text;
+	   loginCredentials = text;
+	   const x = loginCredentials.split(',')[0];
+	   callback(x);
 	});
 	/* Start reading the blob as text */
 	reader.readAsText(fileContents);
 	fileHandleRead.close();
+	
+}
+
+function addToList(x) {
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+			console.log(json.list);
+			list = json.list;
+			console.log(list.includes(detailedAnime));
+			if (list.includes(detailedAnime)) {
+				console.log("Este anime já está na lista.")
+			}
+			else {
+				console.log(json._id);
+				updateList(json._id);
+			}
+		});	 
+}
+
+function updateList(x) {
+	list.push(detailedAnime);
+	let sendJson = {
+		"list": list
+	}
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "PATCH",
+		  body: JSON.stringify(sendJson),
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+		});	 
+}
+
+function addToHistory(x) {
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+			history = json.history;
+			if (history[detailedAnime] == undefined) {
+				history[detailedAnime] = 1;
+				console.log(json._id);
+				updateHistory(json._id);
+			}
+			localStorage.setItem("actualEpisode", history[detailedAnime]);
+		});	 
+}
+
+function updateHistory(x) {
+	let sendJson = {
+		"history": history
+	}
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "PATCH",
+		  body: JSON.stringify(sendJson),
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+		});	 
 }

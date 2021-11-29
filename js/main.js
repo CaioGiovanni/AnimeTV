@@ -11,10 +11,13 @@ var bool;
 Main.onLoad = function () {
 	console.log("Main.onLoad()");
 	getLoginCreds();
-	console.log(loginCredentials);
-	if (loginCredentials != undefined) {
-		window.location.replace("home.html");
-	}
+	setTimeout(()=>{
+		console.log(loginCredentials);
+		if (loginCredentials != undefined) {
+			window.location.replace("home.html");
+		}
+	},2000);
+	
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
@@ -84,7 +87,7 @@ Main.handleKeyDownEvents = function () {
 					else {
 						console.log("Invalid login.");
 					}
-				},10000);
+				},5000);
 			}
 			if (actualFocused == 3) {
 				//getLoginCreds();
@@ -154,7 +157,7 @@ function createLoginCreds (x, y) {
 	
 	var fileHandleWrite = tizen.filesystem.openFile('documents/AnimeTV/loginCredentials', 'w');
 	console.log('File opened for writing');
-	const creds = x + " , " + y;
+	const creds = x + "," + y;
 	console.log(creds);
 	var blobToWrite = new Blob([creds]);
 	fileHandleWrite.writeBlob(blobToWrite);
