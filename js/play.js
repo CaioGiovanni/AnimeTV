@@ -2,7 +2,7 @@ var Main = {};
 var anime = localStorage.getItem("detailedAnime");
 var animeEpisode = localStorage.getItem("actualEpisode"); 
 
-var Player = document.getElementById('player');
+//var Player = document.getElementById('player');
 
 //called when application was loaded
 Main.onLoad = function () {
