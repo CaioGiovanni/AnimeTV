@@ -13,11 +13,11 @@ var detailedAnime = 5;
 //called when application was loaded
 Detalhes.onLoad = function () {
 	console.log("Detalhes.onLoad()");
-	localStorage.setItem("detailedAnime", detailedAnime);
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
-	var responseUrl = "https://api.aniapi.com/v1/anime/" + detailedAnime;
+	
+	var responseUrl = "https://api.aniapi.com/v1/anime/" + localStorage.id_anime;
 	fetch(responseUrl, {
 		  method: "GET",
 		  headers: {"Content-type": "application/json;charset=UTF-8"}
@@ -30,7 +30,7 @@ Detalhes.onLoad = function () {
 		document.getElementById("titulo-anime").innerHTML = data.titles.en;
 		document.getElementById("descricao").innerHTML = data.descriptions.en
 		document.getElementById("categoria").innerHTML = data.genres;
-		});
+		});	
 	
 	// setup handler to key events
 	Detalhes.handleKeyDownEvents();
