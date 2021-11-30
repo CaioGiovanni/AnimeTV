@@ -10,13 +10,15 @@ var bool;
 //called when application was loaded
 Main.onLoad = function () {
 	console.log("Main.onLoad()");
+	const temp = ["index.html"];
+	localStorage.setItem("lastPages", JSON.stringify(temp));
+	
 	getLoginCreds();
 	setTimeout(()=>{
 		console.log(loginCredentials);
-	//  REMOVE THIS COMMENT TO AUTO VERIFY LOGIN
-	//	if (loginCredentials != undefined) {
-	//		window.location.replace("home.html");
-	//	}
+		if (loginCredentials != undefined) {
+			window.location.replace("home.html");
+		}
 	},2000);
 	
 	elems = document.getElementsByClassName('focusable');
@@ -92,7 +94,7 @@ Main.handleKeyDownEvents = function () {
 			}
 			if (actualFocused == 3) {
 				//getLoginCreds();
-				//window.location.replace("cadastro.html");
+				window.location.replace("cadastro.html");
 			}
     		break;
     	case tvKey.RETURN: //RETURN button

@@ -2,11 +2,18 @@ var Main = {};
 var elems;
 var actualFocused;
 var t = tau.animation.target;
+var temp;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
 Main.onLoad = function () {
 	console.log("Main.onLoad()");
+
+	temp = localStorage.getItem('lastPages');
+	temp = JSON.parse(temp);
+	temp.push("busca.html");	
+	localStorage.setItem("lastPages", JSON.stringify(temp));
+	
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
@@ -69,7 +76,10 @@ Main.handleKeyDownEvents = function () {
     		break;
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
-    		window.location.replace("home.html");
+    		temp.pop();
+    		const temp2 = temp.pop();
+    		localStorage.setItem("lastPages", JSON.stringify(temp));
+    		window.location.replace(temp2);
     		break;
     	default:
     		console.log("Key code : " + e.keyCode);

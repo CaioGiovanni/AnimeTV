@@ -5,19 +5,26 @@ var t = tau.animation.target;
 var data;
 var list;
 var history;
-var detailedAnime = 5;
-//var detailedAnime = localStorage.getItem("detailedAnime");
+//var detailedAnime = 5;
+var temp;
+var detailedAnime = localStorage.getItem("id_anime");
 
 //var Player = document.getElementById('player');
 
 //called when application was loaded
 Detalhes.onLoad = function () {
 	console.log("Detalhes.onLoad()");
+
+	temp = localStorage.getItem('lastPages');
+	temp = JSON.parse(temp);
+	temp.push("detalhes.html");	
+	localStorage.setItem("lastPages", JSON.stringify(temp));
+	
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
 	
-	var responseUrl = "https://api.aniapi.com/v1/anime/" + localStorage.id_anime;
+	var responseUrl = "https://api.aniapi.com/v1/anime/" + detailedAnime;
 	fetch(responseUrl, {
 		  method: "GET",
 		  headers: {"Content-type": "application/json;charset=UTF-8"}
@@ -100,7 +107,10 @@ Detalhes.handleKeyDownEvents = function () {
     		break;
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
-    		window.location.replace("home.html");
+    		temp.pop();
+    		const temp2 = temp.pop();
+    		localStorage.setItem("lastPages", JSON.stringify(temp));
+    		window.location.replace(temp2);
     		break;
     	default:
     		console.log("Key code : " + e.keyCode);

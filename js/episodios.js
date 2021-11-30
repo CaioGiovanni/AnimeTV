@@ -1,11 +1,18 @@
 var Episodios= {};
 var elems;
 var actualFocused;
+var temp;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
 Episodios.onLoad = function () {
 	console.log("Episodios.onLoad()");
+
+	temp = localStorage.getItem('lastPages');
+	temp = JSON.parse(temp);
+	temp.push("episodios.html");	
+	localStorage.setItem("lastPages", JSON.stringify(temp));
+	
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
@@ -88,7 +95,10 @@ Episodios.handleKeyDownEvents = function () {
     		
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
-    		window.location.replace("detalhes.html");
+    		temp.pop();
+    		const temp2 = temp.pop();
+    		localStorage.setItem("lastPages", JSON.stringify(temp));
+    		window.location.replace(temp2);
     		break;
     	default:
     		console.log("Key code : " + e.keyCode);

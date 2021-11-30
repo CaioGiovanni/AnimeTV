@@ -4,10 +4,17 @@ var actualFocused;
 var teste;
 //var Player = document.getElementById('player');
 const main = document.getElementById('main');
+var temp;
 
 //called when application was loaded
 Home.onLoad = function () {
 	console.log("Home.onLoad()");
+	
+	temp = localStorage.getItem('lastPages');
+	temp = JSON.parse(temp);
+	temp.push("home.html");	
+	localStorage.setItem("lastPages", JSON.stringify(temp));
+	
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
@@ -256,7 +263,10 @@ Home.handleKeyDownEvents = function () {
     		
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
-    		
+    		temp.pop();
+    		const temp2 = temp.pop();
+    		localStorage.setItem("lastPages", JSON.stringify(temp));
+    		window.location.replace(temp2);
     		break;
     		
     	default:

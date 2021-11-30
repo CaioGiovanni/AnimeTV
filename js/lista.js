@@ -1,11 +1,18 @@
 var Lista = {};
 var elems;
 var actualFocused;
+var temp;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
 Lista.onLoad = function () {
 	console.log("Lista.onLoad()");
+
+	temp = localStorage.getItem('lastPages');
+	temp = JSON.parse(temp);
+	temp.push("lista.html");	
+	localStorage.setItem("lastPages", JSON.stringify(temp));
+	
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
 	
@@ -52,9 +59,10 @@ Lista.handleKeyDownEvents = function () {
     		
     	case tvKey.RETURN: //Return button
     		console.log("RETURN");
-			
-				window.location.replace("home.html");
-	
+    		temp.pop();
+    		const temp2 = temp.pop();
+    		localStorage.setItem("lastPages", JSON.stringify(temp));
+    		window.location.replace(temp2);
     		break;	
     	
     	default:

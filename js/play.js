@@ -1,12 +1,18 @@
 var Main = {};
-var anime = localStorage.getItem("detailedAnime");
+var anime = localStorage.getItem("id_anime");
 var animeEpisode = localStorage.getItem("actualEpisode"); 
+var temp;
 
 //var Player = document.getElementById('player');
 
 //called when application was loaded
 Main.onLoad = function () {
 	console.log("Main.onLoad()");
+
+	temp = localStorage.getItem('lastPages');
+	temp = JSON.parse(temp);
+	temp.push("play.html");	
+	localStorage.setItem("lastPages", JSON.stringify(temp));
 	
 	//enabling media keys
 	//Main.enableMediaKeys();
@@ -79,8 +85,10 @@ Main.handleKeyDownEvents = function () {
     		break;
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
-    		//window.location.replace("detalhes.html");
-    		window.location.replace("episodios.html");
+    		temp.pop();
+    		const temp2 = temp.pop();
+    		localStorage.setItem("lastPages", JSON.stringify(temp));
+    		window.location.replace(temp2);
     		break;
     	case tvKey.PLAYPAUSE: // PLAYPAUSE button
     		console.log("PLAYPAUSE");

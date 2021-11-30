@@ -2,6 +2,7 @@ var Romance = {};
 var elems;
 var actualFocused;
 var teste;
+var temp;
 
 
 //var Player = document.getElementById('player');
@@ -9,6 +10,12 @@ var teste;
 //called when application was loaded
 Romance.onLoad = function () {
 	console.log("Romance.onLoad()");
+
+	temp = localStorage.getItem('lastPages');
+	temp = JSON.parse(temp);
+	temp.push("romance.html");	
+	localStorage.setItem("lastPages", JSON.stringify(temp));
+	
 	elems = document.getElementsByClassName("focusable");
 	moveNext(-1);
 	
@@ -163,7 +170,10 @@ Romance.handleKeyDownEvents = function () {
     		
     	case tvKey.RETURN: //RETURN button
     		console.log("RETURN");
-    		window.location.replace("home.html");
+    		temp.pop();
+    		const temp2 = temp.pop();
+    		localStorage.setItem("lastPages", JSON.stringify(temp));
+    		window.location.replace(temp2);
     		break;
     		
     	default:
