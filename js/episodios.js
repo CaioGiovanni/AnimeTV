@@ -13,6 +13,21 @@ Episodios.onLoad = function () {
 	Episodios.handleKeyDownEvents();
 };
 
+var responseUrl = "https://api.aniapi.com/v1/episode?anime_id=" + localStorage.id_anime;;
+fetch(responseUrl, {
+	  method: "GET",
+	  headers: {"Content-type": "application/json;charset=UTF-8"}
+	})
+	.then(response => response.json()) 
+	.then(json => {console.log(json);
+	console.log(json.data); 
+	data = json.data;
+	document.getElementById("capa_anime").src = data.cover_image;
+	document.getElementById("titulo-anime").innerHTML = data.titles.en;
+	document.getElementById("descricao").innerHTML = data.descriptions.en
+	document.getElementById("categoria").innerHTML = data.genres;
+	});	
+
 // called when application has closed
 Episodios.onUnload = function () {
 	console.log("Episodios.onUnload()");
