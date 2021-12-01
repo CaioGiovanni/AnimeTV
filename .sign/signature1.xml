@@ -124,8 +124,8 @@ c1qA9ZLysw==</DigestValue>
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>2VbLqHePAkpkI2fgg1eoZxYg7xcpRlFu0E/4yNB7hXh+qUZrk7VOOs4ZEfA+dTZdOnyH/82b/KSH
-HwLjqEk10Q==</DigestValue>
+<DigestValue>/Q8IbJGy4Shb+0zZT0fXgyqHLQ/vvHQrfSSsNiUVrxxNnW0bRrTtXZgsDri70YyWm9l+/v16KMxq
+xjMAEtSzRg==</DigestValue>
 </Reference>
 <Reference URI="avaliados.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -169,8 +169,8 @@ FOIVi9VV+w==</DigestValue>
 </Reference>
 <Reference URI="detalhes.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>kH5Z7ni34OIt6lqpUbP6lY9XaJnP2gBPt3aaWMJnP6KKhJWAnoUHte7IS/5V8OVe+kLQN4AmvV5q
-GOu8ihFxTw==</DigestValue>
+<DigestValue>yP7ZkxJ0xfj2KboQSTZw8l5tUfCisJnmtjqlY9Jf1c6Wh0CCg9YzhdbMvT++z8mWw99K4VHTNHSo
+jtXM9sUaYA==</DigestValue>
 </Reference>
 <Reference URI="episodios.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -239,8 +239,8 @@ vneKw5/ZUg==</DigestValue>
 </Reference>
 <Reference URI="js%2Fdetalhes.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
-<DigestValue>Z0UahTnqDzK08DdhSWodiyfxwIAiqOneLI1dHoMxekUOV06fOhDInSfwtuCZ2HcU5GjPUba3rhB7
-JINQ0/r5gg==</DigestValue>
+<DigestValue>4VufAxMppbeVeZSyIieZMxk7BnMj4bcT0A6Ag+ogrfEa5STwlVZsTA3bnxd5JZE4Vrug0rxK5kdM
+/qo4q98J9Q==</DigestValue>
 </Reference>
 <Reference URI="js%2Fepisodios.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"></DigestMethod>
@@ -2257,9 +2257,9 @@ GyvKX9Snig==</DigestValue>
 </Reference>
 </SignedInfo>
 <SignatureValue>
-r5U+iBDU7cV0hKiXT2fkiveNOsPiWVfyeD74VLqcfJuL7MZNZcb49CFrP0Kt7PyCjQU4qMEQBDav
-hEQCDLVOPjMNBzZ71AMv7dUwKUEBeQeOTsnqR2FV2CD9zK/kZBtV1TvlJca7dKivYvuS/SzBQOwx
-Q0SOjLUxCiCh6eBcjvo=
+qHjWtVBRID5Rdr7UUSuUlm7nnkg0kJKLiyLleQirz2tlkzDLLnhdVPfr9PsmiLF5qEt00bw2mxaJ
+MunSFP/Fx7JYMaQqh/kGWGQGooaV3dA/lPIg3WlWCpXAtFRftm2EAX5oyCqTkgB4YzcC25qbz3lI
+SLY7NvRPyw4cro4WRqY=
 </SignatureValue>
 <KeyInfo>
 <X509Data>

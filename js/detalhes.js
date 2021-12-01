@@ -7,7 +7,7 @@ var list;
 var history;
 //var detailedAnime = 5;
 var temp;
-var detailedAnime = localStorage.getItem("id_anime");
+var detailedAnime = parseInt(localStorage.getItem("id_anime"));
 
 //var Player = document.getElementById('player');
 
@@ -19,6 +19,19 @@ Detalhes.onLoad = function () {
 	temp = JSON.parse(temp);
 	temp.push("detalhes.html");	
 	localStorage.setItem("lastPages", JSON.stringify(temp));
+	
+	getLoginCreds(getList);
+	getLoginCreds(getHistory);
+	
+	setTimeout(()=>{
+		if (list.includes(detailedAnime)) {
+			document.getElementById("btn_add_lista").textContent = "Remover da lista";
+			document.getElementById("btn_add_lista").style.background="#E9967A";
+		}
+		if (history[detailedAnime] != undefined) {
+			document.getElementById("btn_episodio_atual").textContent = "Assistir Episodio atual : " + history[detailedAnime];
+		}
+	},1300);
 	
 	elems = document.getElementsByClassName('focusable');
 	moveNext(-1);
@@ -183,6 +196,30 @@ function getLoginCreds (callback) {
 	fileHandleRead.close();
 }
 
+function getList(x) {
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+			console.log(json.list);
+			list = json.list;
+			console.log(list.includes(detailedAnime));
+		});	 
+}
+
+function getHistory(x) {
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+			history = json.history;
+		});	 
+}
+
 function addToList(x) {
 	var responseUrl = "http://10.0.2.2:8080/users/" + x;
 	fetch(responseUrl, {
@@ -194,10 +231,9 @@ function addToList(x) {
 			list = json.list;
 			console.log(list.includes(detailedAnime));
 			if (list.includes(detailedAnime)) {
-				console.log("Este anime já está na lista.")
+				removeList(json._id);
 			}
 			else {
-				console.log(json._id);
 				updateList(json._id);
 			}
 		});	 
@@ -215,7 +251,28 @@ function updateList(x) {
 		  headers: {"Content-type": "application/json;charset=UTF-8"}
 		}).then(response => response.json()).then(json => {
 			console.log(json);
-		});	 
+		});
+	document.getElementById("btn_add_lista").textContent = "Remover da lista";
+	document.getElementById("btn_add_lista").style.background="#E9967A";
+}
+
+function removeList(x) {
+    list = list.filter(function(value, index, arr){ 
+        return value != detailedAnime;
+    });
+	let sendJson = {
+		"list": list
+	}
+	var responseUrl = "http://10.0.2.2:8080/users/" + x;
+	fetch(responseUrl, {
+		  method: "PATCH",
+		  body: JSON.stringify(sendJson),
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+		});	
+	document.getElementById("btn_add_lista").textContent = "Adicionar à lista";
+	document.getElementById("btn_add_lista").style.background="yellow";
 }
 
 function addToHistory(x) {
