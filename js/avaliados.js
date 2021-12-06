@@ -112,9 +112,6 @@ Avaliados.handleKeyDownEvents = function () {
     	case tvKey.UP: //UP arrow
     		
     		console.log("UP");
-    		
-    		elems[i].focus();
-        	actualFocused = tidx - 1;
     		moveBackward(actualFocused);
     		
     		break;
@@ -123,13 +120,8 @@ Avaliados.handleKeyDownEvents = function () {
     		
     	case tvKey.RIGHT: //RIGHT arrow
     		console.log("RIGHT");
-    		
-    	
         		moveNext(actualFocused);
-        	
-    		
-    		
-    		break;
+        	break;
     		
     	case tvKey.DOWN: //DOWN arrow
     		console.log("DOWN");

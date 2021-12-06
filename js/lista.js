@@ -2,6 +2,8 @@ var Lista = {};
 var elems;
 var actualFocused;
 var temp;
+var list;
+var capaList = [];
 //var Player = document.getElementById('player');
 
 //called when application was loaded
@@ -13,8 +15,32 @@ Lista.onLoad = function () {
 	temp.push("lista.html");	
 	localStorage.setItem("lastPages", JSON.stringify(temp));
 	
-	elems = document.getElementsByClassName('focusable');
-	moveNext(-1);
+	getLoginCreds(getList);
+	
+	setTimeout(()=>{
+		var divRow;
+		var div;
+		for(var i = 0; i < capaList.length; i++){
+			var divFather = document.getElementById("listContainer");
+			if (i % 3 == 0) {
+				div = document.createElement("div");
+				div.classList.add("col-lg-10");
+				div.style.marginLeft = "4em";
+				divFather.appendChild(div);
+				divRow = document.createElement("div");
+				divRow.classList.add("row");
+				div.appendChild(divRow);
+			}
+	  	   	divRow.innerHTML += `
+	  	   	<div class="col-lg-4">
+	  	   		<img alt="${list[i]}" style="padding:.5em;" src="${capaList[i]}" tabindex="${i}" class="img-responsive container focusable" id="${list[i]}">
+			</div>
+	  
+	  	   	`;
+	  	  }
+		elems = document.getElementsByClassName('focusable');
+		moveNext(-1);
+	},2000);
 	
 	// setup handler to key events
 	Lista.handleKeyDownEvents();
@@ -32,28 +58,35 @@ Lista.handleKeyDownEvents = function () {
     document.addEventListener('keydown', function(e) {
     	    	
     	switch(e.keyCode){
+    	case tvKey.UP: //LEFT arrow
+        	console.log("UP");
+        	if (actualFocused > 2){
+        		moveNext(actualFocused - 4);
+        	}
+    		break;
+    	case tvKey.DOWN: //LEFT arrow
+        	console.log("DOWN");
+        	if (actualFocused < list.length - (list.length % 3)){
+        		moveNext(actualFocused + 2);
+        	}
+    		break;
     	case tvKey.LEFT: //LEFT arrow
         	console.log("LEFT");
-        	if (actualFocused>0){
+        	if (actualFocused > list.length){
         		moveBackward(actualFocused);
         	}
     		break;
-    		
-
     	case tvKey.RIGHT: //RIGHT arrow
     		console.log("RIGHT");
-    		if (actualFocused<5) {
+    		if (actualFocused < list.length) {
         		moveNext(actualFocused);
-        	}
-        	
-    
+        	}    
     		break;
     	
     	case tvKey.ENTER: //OK button
     		console.log("OK");
-			if (!(actualFocused == 0 || actualFocused==4)) {
-				window.location.replace("detalhes.html");
-			}
+    		localStorage.setItem("id_anime", document.activeElement.getAttribute("tabinex"));
+    		window.location.replace("detalhes.html");
 		
     		break;
     		
@@ -133,5 +166,19 @@ function getList(x) {
 			console.log(json);
 			console.log(json.list);
 			list = json.list;
-		});	 
+			getCapas();
+		});
+}
+
+function getCapas() {
+	for (i = 0; i < list.length; i++) {
+		var responseUrl = "https://api.aniapi.com/v1/anime/" + list[i];
+		fetch(responseUrl, {
+			  method: "GET",
+			  headers: {"Content-type": "application/json;charset=UTF-8"}
+			}).then(response => response.json()).then(json => {
+				console.log(json);
+				capaList.push(json.data.cover_image);
+			});
+	}
 }

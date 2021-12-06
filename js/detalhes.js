@@ -8,6 +8,7 @@ var history;
 //var detailedAnime = 5;
 var temp;
 var detailedAnime = parseInt(localStorage.getItem("id_anime"));
+var firstEpNumber;
 
 //var Player = document.getElementById('player');
 
@@ -33,9 +34,6 @@ Detalhes.onLoad = function () {
 		}
 	},1300);
 	
-	elems = document.getElementsByClassName('focusable');
-	moveNext(-1);
-	
 	
 	var responseUrl = "https://api.aniapi.com/v1/anime/" + detailedAnime;
 	fetch(responseUrl, {
@@ -51,6 +49,27 @@ Detalhes.onLoad = function () {
 		document.getElementById("descricao").innerHTML = data.descriptions.en
 		document.getElementById("categoria").innerHTML = data.genres;
 		});	
+	
+	var responseUrl = "https://api.aniapi.com/v1/episode?anime_id=" + detailedAnime;
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		})
+		.then(response => response.json()) 
+		.then(json => {console.log(json);
+		console.log(json.data.documents); 
+		if (json.data.documents == undefined) {
+			document.getElementById("btn_episodio_atual").textContent = "Nenhum episódio disponível";
+			document.getElementById("btn_episodio_atual").classList.remove("focusable");
+		}
+		else {
+			firstEpNumber = json.data.documents[0].number;
+			document.getElementById("btn_episodio_atual").textContent = "Assistir Episodio atual : " + json.data.documents[0].number;
+		}
+		});	
+	
+	elems = document.getElementsByClassName('focusable');
+	moveNext(-1);
 	
 	// setup handler to key events
 	Detalhes.handleKeyDownEvents();
@@ -257,7 +276,7 @@ function updateList(x) {
 }
 
 function removeList(x) {
-    list = list.filter(function(value, index, arr){ 
+    list = list.filter(function(value, index, arr){
         return value != detailedAnime;
     });
 	let sendJson = {
@@ -284,7 +303,7 @@ function addToHistory(x) {
 			console.log(json);
 			history = json.history;
 			if (history[detailedAnime] == undefined) {
-				history[detailedAnime] = 1;
+				history[detailedAnime] = firstEpNumber;
 				console.log(json._id);
 				updateHistory(json._id);
 			}

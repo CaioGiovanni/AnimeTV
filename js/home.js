@@ -15,12 +15,10 @@ Home.onLoad = function () {
 	temp.push("home.html");	
 	localStorage.setItem("lastPages", JSON.stringify(temp));
 	
-	elems = document.getElementsByClassName('focusable');
-	moveNext(-1);
 	
 	// setup handler to key events
 	Home.handleKeyDownEvents();
-};
+
 //avaliados
 var responseUrl = "http://api.aniapi.com/v1/anime/";
 fetch(responseUrl, {
@@ -115,9 +113,12 @@ fetch(responseUrl3, {
   	  }
 	
 	});	 
+
+elems = document.getElementsByClassName('focusable');
+moveNext(-1);
 	
 
-
+};
 
 // called when application has closed
 
