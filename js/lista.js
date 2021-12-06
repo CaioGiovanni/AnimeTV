@@ -72,7 +72,7 @@ Lista.handleKeyDownEvents = function () {
     		break;
     	case tvKey.LEFT: //LEFT arrow
         	console.log("LEFT");
-        	if (actualFocused > list.length){
+        	if (actualFocused > 0){
         		moveBackward(actualFocused);
         	}
     		break;
@@ -85,9 +85,14 @@ Lista.handleKeyDownEvents = function () {
     	
     	case tvKey.ENTER: //OK button
     		console.log("OK");
-    		localStorage.setItem("id_anime", document.activeElement.getAttribute("tabinex"));
-    		window.location.replace("detalhes.html");
-		
+    		var tempActualFocused;
+    		for (var i = elems.length; i--;) {
+    	        var tidx2 = elems[i].getAttribute('tabindex');
+    	        if (tidx2 == actualFocused) {
+    	        	localStorage.setItem("id_anime", list[tidx2]);
+    	    		window.location.replace("detalhes.html");
+    	        }
+    	    }
     		break;
     		
     	case tvKey.RETURN: //Return button
