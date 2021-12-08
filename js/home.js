@@ -52,6 +52,7 @@ fetch(responseUrl, {
 
 
 
+	
 //romance
 var responseUrl2 = "https://api.aniapi.com/v1/anime?&genres=Romance";
 fetch(responseUrl2, {
@@ -70,7 +71,7 @@ fetch(responseUrl2, {
   	    var div = document.createElement("div");
   	    div.classList.add("col-lg-3")
   	   	div.innerHTML= `
-  	   <img alt="capa anime" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i+3} 
+  	   <img alt="capa anime" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i} 
   		  class="img-responsive container focusable imagem" id="capa_anime">
   
   	   	`
@@ -93,7 +94,7 @@ fetch(responseUrl3, {
 	.then(json => {console.log(json);
 	teste = json.data.documents;
 
-	 for(var i = 14; i < 18; i++){    
+	 for(var i = 13; i < 17; i++){    
   	    //criar elemento div
   	   
   	   	if(teste[i].score>85){
@@ -101,7 +102,7 @@ fetch(responseUrl3, {
   	    var div = document.createElement("div");
   	    div.classList.add("col-lg-3")
   	   	div.innerHTML= `
-  	   <img alt="" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i+3} 
+  	   <img alt="" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i} 
   		  class="img-responsive container focusable imagem" id="capa_anime">
   
   	   	`
@@ -138,11 +139,14 @@ Home.handleKeyDownEvents = function () {
     	    	
     	switch(e.keyCode){
     	case tvKey.LEFT: //LEFT arrow
+    		
+    		
         	console.log("LEFT");
         	
-        	if (!(actualFocused==2 || actualFocused==6)) {
+        	if (!(actualFocused==2 || actualFocused==7 || actualFocused==12)) {
         		moveBackward(actualFocused);
         	}
+     
         	
         	
     		break;
@@ -153,7 +157,8 @@ Home.handleKeyDownEvents = function () {
     			moveBackward(13)
         	}
     		else if (actualFocused <=11 && actualFocused>8) {
-    			moveBackward(8)
+    			elems[7].focus();
+            	actualFocused = 7;
         	}
     		else if (actualFocused <=6 && actualFocused>2) {
     			moveBackward(3)
@@ -189,6 +194,8 @@ Home.handleKeyDownEvents = function () {
     		
     		break;
     		
+     	
+    		
     	case tvKey.DOWN: //DOWN arrow
     		console.log("DOWN");
     		
@@ -210,7 +217,7 @@ Home.handleKeyDownEvents = function () {
 	        	actualFocused = 12;
     			
     		}
-    		else if(actualFocused <= 7){
+    		else if(actualFocused <= 7 && actualFocused >= 2){
     			elems[8].focus();
 	        	actualFocused = 8;
     		}
@@ -229,18 +236,20 @@ Home.handleKeyDownEvents = function () {
 				window.location.replace("lista.html");
 			}
 			else if (actualFocused == 1) {
-				
+	
 				window.location.replace("busca.html");	
 			}
 			else if (actualFocused==2) {
-				
-				window.location.replace("avaliados.html");
+				localStorage.setItem("categoria", "Animals")
+				window.location.replace("categorias.html");
 			}
 			else if (actualFocused ==7) {
-				window.location.replace("romance.html");
+				localStorage.setItem("categoria", "Romance")
+				window.location.replace("categorias.html");
 			}
 			else if (actualFocused ==12) {
-				window.location.replace("acao.html");
+				localStorage.setItem("categoria", "Crime,War")
+				window.location.replace("categorias.html");
 			}
 			
 			else{

@@ -58,6 +58,7 @@ Detalhes.onLoad = function () {
 		.then(response => response.json()) 
 		.then(json => {console.log(json);
 		console.log(json.data.documents); 
+		localStorage.setItem("episodios", JSON.stringify(json.data.documents));
 		if (json.data.documents == undefined) {
 			document.getElementById("btn_episodio_atual").textContent = "Nenhum episódio disponível";
 			document.getElementById("btn_episodio_atual").classList.remove("focusable");

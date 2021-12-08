@@ -1,4 +1,4 @@
-var Acao = {};
+var Avaliados = {};
 var elems;
 var actualFocused;
 var teste;
@@ -8,12 +8,12 @@ var temp;
 //var Player = document.getElementById('player');
 
 //called when application was loaded
-Acao.onLoad = function () {
-	console.log("Acao.onLoad()");
+Avaliados.onLoad = function () {
+	console.log("Avaliados.onLoad()");
 	
 	temp = localStorage.getItem('lastPages');
 	temp = JSON.parse(temp);
-	temp.push("acao.html");	
+	temp.push("avaliados.html");	
 	localStorage.setItem("lastPages", JSON.stringify(temp));
 	
 	elems = document.getElementsByClassName("focusable");
@@ -21,29 +21,29 @@ Acao.onLoad = function () {
 	
 	console.log(elems)
 	// setup handler to key events
-	Acao.handleKeyDownEvents();
+	Avaliados.handleKeyDownEvents();
 };
 
 // called when application has closed
-Acao.onUnload = function () {
-	console.log("Acao.onUnload()");
+Avaliados.onUnload = function () {
+	console.log("Avaliados.onUnload()");
 };
 	
-	
-//Acao
-var responseUrl = "https://api.aniapi.com/v1/anime?&genres=Action,War,Adventure";
-fetch(responseUrl, {
-	  method: "GET",
-	  headers: {"Content-type": "application/json;charset=UTF-8"}
-	})
-	.then(response => response.json()) 
-	.then(json => {console.log(json);
-	
-	
-	teste = json.data.documents;
-	
-	
+	var categoria = localStorage.getItem("categoria");
+//avaliados
+
+	var responseUrl = "http://api.aniapi.com/v1/anime/?&genres="+categoria;
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		})
+		.then(response => response.json()) 
+		.then(json => {console.log(json);
 		
+		
+		teste = json.data.documents;
+		
+
 	 for(var i = 0; i < teste.length; i=i+4){    
 		 
   	    //criar elemento div   
@@ -81,7 +81,7 @@ fetch(responseUrl, {
   	   	`
   	   	
   	   	
-  		document.getElementById("lista_acao").appendChild(div); //adicionando imagem como filha de demo
+  		document.getElementById("lista_avaliados").appendChild(div); //adicionando imagem como filha de demo
     	  
   	   	}
   	    
@@ -91,9 +91,11 @@ fetch(responseUrl, {
 	
 	});	 
 	
+
 	
 	
-Acao.handleKeyDownEvents = function () {
+	
+Avaliados.handleKeyDownEvents = function () {
 
 	// add eventListener for keydown
     document.addEventListener('keydown', function(e) {
@@ -102,20 +104,23 @@ Acao.handleKeyDownEvents = function () {
     	case tvKey.LEFT: //LEFT arrow
         	console.log("LEFT");
         	
-        	if (!(actualFocused==2 || actualFocused==6)) {
-        		moveBackward(actualFocused);
-        	}
-        	
+        	elems[actualFocused-1].focus();
+        	actualFocused -= 1;
+        
         	
     		break;
     		
     	case tvKey.UP: //UP arrow
     		
+    		if(actualFocused>5){
     		console.log("UP");
-    		
-    		elems[i].focus();
-        	actualFocused = tidx - 1;
-    		moveBackward(actualFocused);
+    		elems[actualFocused-4].focus();
+        	actualFocused -=4;
+    		}
+        	else if(actualFocused>2 && actualFocused<=5){
+        	elems[1].focus();
+        	actualFocused = 1;
+    	}
     		
     		break;
     		
@@ -123,20 +128,23 @@ Acao.handleKeyDownEvents = function () {
     		
     	case tvKey.RIGHT: //RIGHT arrow
     		console.log("RIGHT");
-    		
-    	
-        		moveNext(actualFocused);
-        	
-    		
-    		
-    		break;
+    		elems[actualFocused+1].focus();
+        	actualFocused += 1;
+        		
+        	break;
     		
     	case tvKey.DOWN: //DOWN arrow
     		console.log("DOWN");
+    		if(actualFocused <2){
     		
-    		moveNext(actualFocused);
+    		elems[2].focus();
+            actualFocused =2;
+    	
     		
-    		
+    		}else {
+    			elems[actualFocused+4].focus();
+            	actualFocused +=4;
+			}
     		break;
     		
     		
@@ -186,8 +194,8 @@ Acao.handleKeyDownEvents = function () {
 
 
 //binding some events
-window.onload = Acao.onLoad;
-window.onunload = Acao.onUnload;
+window.onload = Avaliados.onLoad;
+window.onunload = Avaliados.onUnload;
 
 /*********************************************** Player *************************************************/
 

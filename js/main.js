@@ -13,7 +13,7 @@ Main.onLoad = function () {
 	const temp = ["index.html"];
 	localStorage.setItem("lastPages", JSON.stringify(temp));
 	
-	getLoginCreds();
+getLoginCreds();
 	setTimeout(()=>{
 		console.log(loginCredentials);
 		if (loginCredentials != undefined) {
@@ -84,14 +84,15 @@ Main.handleKeyDownEvents = function () {
 				setTimeout(()=>{
 					console.log(bool);
 					if (bool == true) {
-						//getLoginCreds();
+						getLoginCreds();
 						window.location.replace("home.html");
 					}
 					else {
 						console.log("Invalid login.");
 					}
 				},5000);
-			}
+			break;
+    		//}
 			if (actualFocused == 3) {
 				//getLoginCreds();
 				window.location.replace("cadastro.html");
