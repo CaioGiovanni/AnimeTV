@@ -3,7 +3,9 @@ var elems;
 var actualFocused;
 var temp;
 //var Player = document.getElementById('player');
+var detailedAnime = parseInt(localStorage.getItem("id_anime"));
 
+var data_Anime;
 //called when application was loaded
 Episodios.onLoad = function () {
 	console.log("Episodios.onLoad()");
@@ -20,20 +22,62 @@ Episodios.onLoad = function () {
 	Episodios.handleKeyDownEvents();
 };
 
-var responseUrl = "https://api.aniapi.com/v1/episode?anime_id=" + localStorage.id_anime;;
+var responseUrl = "https://api.aniapi.com/v1/anime/" + detailedAnime;
 fetch(responseUrl, {
 	  method: "GET",
 	  headers: {"Content-type": "application/json;charset=UTF-8"}
 	})
 	.then(response => response.json()) 
 	.then(json => {console.log(json);
-	console.log(json.data); 
-	data = json.data;
-	document.getElementById("capa_anime").src = data.cover_image;
-	document.getElementById("titulo-anime").innerHTML = data.titles.en;
-	document.getElementById("descricao").innerHTML = data.descriptions.en
-	document.getElementById("categoria").innerHTML = data.genres;
+	
+	data_Anime = json.data;
+
+	document.getElementById("capa_anime").src = data_Anime.cover_image;
+	
+	
 	});	
+	
+
+	var episodios = localStorage.getItem("episodios");
+
+
+	
+	for(var i = 0; i <episodios.length; i++){    
+		 
+	  	    //criar elemento div   
+	  
+	  	   	
+	  	    var div = document.createElement("div");
+	  	    div.classList.add("row", "container-fluid");
+	  	    
+	  	    div.style="margin-top:4em; padding-left:2em; width: 100%";
+	  	    
+	  	    
+	  	   	div.innerHTML= `
+		  	  <div tabindex=${i+1}  class="container episodios focusable" style="padding-top:10px; padding-bottom:10px; margin-top:40px">
+		      	<div class="col-sm-5">
+		      	<img alt=${episodios[i].video} src="images/Anime1.png" class="img-responsive" id="capa_episodio">
+		      	
+		      	</div>
+		      	
+		      	<div  class="col-sm-7 ">
+		      	<h3 id="titulo_episodio">'Episode '+ ${i}+1 </h3>
+		      	</div>
+		      	
+		     </div>
+		  	    		  
+	  	   	`
+	  	
+	  	  document.getElementById('episodios').appendChild(div);
+	  
+	  
+	  	   	
+	  		 //adicionando imagem como filha de de  	 
+	
+		
+}
+	  console.log(document.getElementById('episodios'));
+
 
 // called when application has closed
 Episodios.onUnload = function () {
