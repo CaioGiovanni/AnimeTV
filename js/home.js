@@ -38,7 +38,7 @@ fetch(responseUrl, {
   	    div.classList.add("col-lg-3")
   	   	div.innerHTML= `
   	   <img alt="${teste[i].id}" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i+3} 
-  		  class="img-responsive container focusable imagem" id="capa_anime" onclick="verDetalhes(${teste[i].id});">
+  		  class="img-responsive container focusable imagem" id="${teste[i].id}" onclick="verDetalhes(${teste[i].id});">
   
   	   	`
   	   	
@@ -71,8 +71,8 @@ fetch(responseUrl2, {
   	    var div = document.createElement("div");
   	    div.classList.add("col-lg-3")
   	   	div.innerHTML= `
-  	   <img alt="capa anime" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i} 
-  		  class="img-responsive container focusable imagem" id="capa_anime">
+  	   <img alt="${teste[i].id}" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i} 
+  		  class="img-responsive container focusable imagem" id="${teste[i].id}">
   
   	   	`
   	   	
@@ -102,8 +102,8 @@ fetch(responseUrl3, {
   	    var div = document.createElement("div");
   	    div.classList.add("col-lg-3")
   	   	div.innerHTML= `
-  	   <img alt="" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i} 
-  		  class="img-responsive container focusable imagem" id="capa_anime">
+  	   <img alt="${teste[i].id}" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i} 
+  		  class="img-responsive container focusable imagem" id="${teste[i].id}">
   
   	   	`
   	   	
@@ -183,11 +183,9 @@ Home.handleKeyDownEvents = function () {
     		console.log("RIGHT");
     		
     		if (!(actualFocused == 6 || actualFocused == 11 || actualFocused == 16 )) {
-        		
         		moveNext(actualFocused);
         	}
     		else if (actualFocused ==2 || actualFocused==7 || actualFocused==12) {
-        		
         		moveNext(actualFocused);
         	}
     		
@@ -200,33 +198,23 @@ Home.handleKeyDownEvents = function () {
     		console.log("DOWN");
     		
     		if (actualFocused<=1) {
-    			elems[2].focus();
-				actualFocused = 2;
-	    	 
+    			moveNext(1);
         	}
     		else if(actualFocused <= 2){
     			moveNext(2);
     		}
     		else if(actualFocused <= 6 && actualFocused >= 3){
-    			elems[7].focus();
-	        	actualFocused = 7;
-    			
+    			moveNext(6);    			
     		}
     		else if (actualFocused <= 11 && actualFocused >= 8){
-    			elems[12].focus();
-	        	actualFocused = 12;
-    			
+    			moveNext(11);
     		}
     		else if(actualFocused <= 7 && actualFocused >= 2){
-    			elems[8].focus();
-	        	actualFocused = 8;
+    			moveNext(7);
     		}
     		else if(actualFocused <= 12){
-    			elems[13].focus();
-	        	actualFocused = 13;
+    			moveNext(12);
     		}
-    		
-    		
     		break;
     		
     		
@@ -236,7 +224,8 @@ Home.handleKeyDownEvents = function () {
 				window.location.replace("lista.html");
 			}
 			else if (actualFocused == 1) {
-	
+				const search = document.getElementById('txtBusca').value;
+				localStorage.setItem("search", search);
 				window.location.replace("busca.html");	
 			}
 			else if (actualFocused==2) {
@@ -253,22 +242,15 @@ Home.handleKeyDownEvents = function () {
 			}
 			
 			else{
-			
-				
-				console.log(actualFocused)
-				console.log(elems);
-				var teste2 = elems[actualFocused];
-				console.log(teste2);
-				
-			
-				localStorage.setItem("id_anime", teste2.alt);
-				window.location.replace("detalhes.html");
-				
-				
+				var tempActualFocused;
+	    		for (var i = elems.length; i--;) {
+	    	        var tidx2 = elems[i].getAttribute('tabindex');
+	    	        if (tidx2 == actualFocused) {
+	    	        	localStorage.setItem("id_anime", elems[i].alt);
+	    	    		window.location.replace("detalhes.html");
+	    	        }
+	    	    }
 			}
-			
-			
-			
     		break;
     		
     	case tvKey.RETURN: //RETURN button

@@ -91,8 +91,7 @@ Main.handleKeyDownEvents = function () {
 						console.log("Invalid login.");
 					}
 				},5000);
-			break;
-    		//}
+    		}
 			if (actualFocused == 3) {
 				//getLoginCreds();
 				window.location.replace("cadastro.html");
