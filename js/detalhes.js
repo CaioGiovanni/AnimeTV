@@ -32,7 +32,7 @@ Detalhes.onLoad = function () {
 		if (history[detailedAnime] != undefined) {
 			document.getElementById("btn_episodio_atual").textContent = "Assistir Episodio atual : " + history[detailedAnime];
 		}
-	},1300);
+	},2300);
 	
 	
 	var responseUrl = "https://api.aniapi.com/v1/anime/" + detailedAnime;
@@ -46,7 +46,7 @@ Detalhes.onLoad = function () {
 		data = json.data;
 		document.getElementById("capa_anime").src = data.cover_image;
 		document.getElementById("titulo-anime").innerHTML = data.titles.en;
-		document.getElementById("descricao").innerHTML = data.descriptions.en
+		document.getElementById("descricao").innerHTML = data.descriptions.en;
 		document.getElementById("categoria").innerHTML = data.genres;
 		});	
 	

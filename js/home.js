@@ -25,29 +25,40 @@ fetch(responseUrl, {
 	  method: "GET",
 	  headers: {"Content-type": "application/json;charset=UTF-8"}
 	})
-	.then(response => response.json()) 
+	.then(response => response.json())
 	.then(json => {console.log(json);
 	teste = json.data.documents;
-
-	 for(var i = 0; i < 4; i++){    
-  	    //criar elemento div
-  	   
-  	   	if(teste[i].score>88){
-  	   	console.log(teste[i].cover_image);	
-  	    var div = document.createElement("div");
-  	    div.classList.add("col-lg-3")
-  	   	div.innerHTML= `
-  	   <img alt="${teste[i].id}" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i+3} 
-  		  class="img-responsive container focusable imagem" id="${teste[i].id}" onclick="verDetalhes(${teste[i].id});">
-  
-  	   	`
-  	   	
-  		document.getElementById("slide_avaliados").appendChild(div); //adicionando imagem como filha de demo
-    	  
-  	   	}
-  	    
-  	  }
+	var tempTeste = [];
+	for (var i = 0; i < teste.length; i++) {
+		if (teste[i].score > 80) {
+			tempTeste.push(teste[i]);
+		}
+	}
+	teste = tempTeste;
+	console.log(teste);
 	
+	var random = [];
+	for(var i = 0; i < 4; i++){
+		var tempRandom = Math.floor(Math.random() * teste.length);
+		if (random.includes(tempRandom)) {
+			i--;
+		}
+		else {
+			console.log("saiu3");
+			random.push(tempRandom);
+	  	   
+	  	   	console.log(teste[tempRandom].cover_image);	
+	  	    var div = document.createElement("div");
+	  	    div.classList.add("col-lg-3")
+	  	   	div.innerHTML= `
+	  	   <img alt="${teste[tempRandom].id}" style="padding:.5em;" src=${teste[tempRandom].cover_image} tabindex=${i+3} 
+	  		  class="img-responsive container focusable imagem" id="${teste[tempRandom].id}" onclick="verDetalhes(${teste[tempRandom].id});">
+	  
+	  	   	`
+	  	   	
+	  		document.getElementById("slide_avaliados").appendChild(div); //adicionando imagem como filha de demo
+		}
+    }
 	});	  
 
 
@@ -62,25 +73,37 @@ fetch(responseUrl2, {
 	.then(response => response.json()) 
 	.then(json => {console.log(json);
 	teste = json.data.documents;
-
-	 for(var i = 8; i < 12; i++){    
-  	    //criar elemento div
-  	   
-  	   	if(teste[i].score>80){
-  	   	console.log(teste[i].cover_image);	
-  	    var div = document.createElement("div");
-  	    div.classList.add("col-lg-3")
-  	   	div.innerHTML= `
-  	   <img alt="${teste[i].id}" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i} 
-  		  class="img-responsive container focusable imagem" id="${teste[i].id}">
-  
-  	   	`
-  	   	
-  		document.getElementById("slide_romance").appendChild(div); //adicionando imagem como filha de demo
-    	  
-  	   	}
-  	    
-  	  }
+	
+	var tempTeste = [];
+	for (var i = 0; i < teste.length; i++) {
+		if (teste[i].score > 80) {
+			tempTeste.push(teste[i]);
+		}
+	}
+	teste = tempTeste;
+	console.log(teste);
+	
+	var random = [];
+	for(var i = 8; i < 12; i++){
+		var tempRandom = Math.floor(Math.random() * teste.length);
+		if (random.includes(tempRandom)) {
+			i--;
+		}
+		else {
+			random.push(tempRandom);
+	  	   
+	  	   	console.log(teste[tempRandom].cover_image);	
+	  	    var div = document.createElement("div");
+	  	    div.classList.add("col-lg-3")
+	  	   	div.innerHTML= `
+	  	   <img alt="${teste[tempRandom].id}" style="padding:.5em;" src=${teste[tempRandom].cover_image} tabindex=${i} 
+	  		  class="img-responsive container focusable imagem" id="${teste[tempRandom].id}" onclick="verDetalhes(${teste[tempRandom].id});">
+	  
+	  	   	`
+	  	   	
+	  		document.getElementById("slide_romance").appendChild(div); //adicionando imagem como filha de demo
+		}
+    }
 	
 	});	  
 
@@ -94,24 +117,36 @@ fetch(responseUrl3, {
 	.then(json => {console.log(json);
 	teste = json.data.documents;
 
-	 for(var i = 13; i < 17; i++){    
-  	    //criar elemento div
-  	   
-  	   	if(teste[i].score>85){
-  	   	console.log(teste[i].cover_image);	
-  	    var div = document.createElement("div");
-  	    div.classList.add("col-lg-3")
-  	   	div.innerHTML= `
-  	   <img alt="${teste[i].id}" style="padding:.5em;" src=${teste[i].cover_image} tabindex=${i} 
-  		  class="img-responsive container focusable imagem" id="${teste[i].id}">
-  
-  	   	`
-  	   	
-  		document.getElementById("slide_acao").appendChild(div); //adicionando imagem como filha de demo
-    	  
-  	   	}
-  	    
-  	  }
+	var tempTeste = [];
+	for (var i = 0; i < teste.length; i++) {
+		if (teste[i].score > 80) {
+			tempTeste.push(teste[i]);
+		}
+	}
+	teste = tempTeste;
+	console.log(teste);
+	
+	var random = [];
+	for(var i = 13; i < 17; i++){
+		var tempRandom = Math.floor(Math.random() * teste.length);
+		if (random.includes(tempRandom)) {
+			i--;
+		}
+		else {
+			random.push(tempRandom);
+	  	   
+	  	   	console.log(teste[tempRandom].cover_image);	
+	  	    var div = document.createElement("div");
+	  	    div.classList.add("col-lg-3")
+	  	   	div.innerHTML= `
+	  	   <img alt="${teste[tempRandom].id}" style="padding:.5em;" src=${teste[tempRandom].cover_image} tabindex=${i} 
+	  		  class="img-responsive container focusable imagem" id="${teste[tempRandom].id}" onclick="verDetalhes(${teste[tempRandom].id});">
+	  
+	  	   	`
+	  	   	
+	  		document.getElementById("slide_acao").appendChild(div); //adicionando imagem como filha de demo
+		}
+    }
 	
 	});	 
 
@@ -157,8 +192,7 @@ Home.handleKeyDownEvents = function () {
     			moveBackward(13)
         	}
     		else if (actualFocused <=11 && actualFocused>8) {
-    			elems[7].focus();
-            	actualFocused = 7;
+    			moveNext(6);
         	}
     		else if (actualFocused <=6 && actualFocused>2) {
     			moveBackward(3)
