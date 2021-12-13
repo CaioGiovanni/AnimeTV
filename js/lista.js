@@ -40,7 +40,9 @@ Lista.onLoad = function () {
 	  	  }
 		elems = document.getElementsByClassName('focusable');
 		moveNext(-1);
-	},2000);
+		console.log(list);
+		console.log(capaList);
+	},5000);
 	
 	// setup handler to key events
 	Lista.handleKeyDownEvents();
@@ -171,19 +173,22 @@ function getList(x) {
 			console.log(json);
 			console.log(json.list);
 			list = json.list;
-			getCapas();
+			getCapas(0);
 		});
 }
 
-function getCapas() {
-	for (i = 0; i < list.length; i++) {
-		var responseUrl = "https://api.aniapi.com/v1/anime/" + list[i];
-		fetch(responseUrl, {
-			  method: "GET",
-			  headers: {"Content-type": "application/json;charset=UTF-8"}
-			}).then(response => response.json()).then(json => {
-				console.log(json);
-				capaList.push(json.data.cover_image);
-			});
-	}
+function getCapas(i) {
+	var responseUrl = "https://api.aniapi.com/v1/anime/" + list[i];
+	fetch(responseUrl, {
+		  method: "GET",
+		  headers: {"Content-type": "application/json;charset=UTF-8"}
+		}).then(response => response.json()).then(json => {
+			console.log(json);
+			capaList.push(json.data.cover_image);
+			if (i < list.length - 1) {
+				i++;
+				getCapas(i);
+				console.log(i);
+			}
+		});
 }

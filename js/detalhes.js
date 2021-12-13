@@ -32,7 +32,7 @@ Detalhes.onLoad = function () {
 		if (history[detailedAnime] != undefined) {
 			document.getElementById("btn_episodio_atual").textContent = "Assistir Episodio atual : " + history[detailedAnime];
 		}
-	},2300);
+	},1300);
 	
 	
 	var responseUrl = "https://api.aniapi.com/v1/anime/" + detailedAnime;
@@ -50,20 +50,21 @@ Detalhes.onLoad = function () {
 		document.getElementById("categoria").innerHTML = data.genres;
 		});	
 	
-	var responseUrl = "https://api.aniapi.com/v1/episode?anime_id=" + detailedAnime;
+	var responseUrl = "https://api.aniapi.com/v1/episode?anime_id=" + detailedAnime + "&source=dreamsub&locale=it";
 	fetch(responseUrl, {
 		  method: "GET",
 		  headers: {"Content-type": "application/json;charset=UTF-8"}
 		})
 		.then(response => response.json()) 
 		.then(json => {console.log(json);
-		console.log(json.data.documents); 
-		localStorage.setItem("episodios", JSON.stringify(json.data.documents));
+		console.log(json.data.documents);
 		if (json.data.documents == undefined) {
-			document.getElementById("btn_episodio_atual").textContent = "Nenhum episódio disponível";
+			document.getElementById("btn_episodio_atual").textContent = "Nenhum episódio disponível para sua região";
 			document.getElementById("btn_episodio_atual").classList.remove("focusable");
+			document.getElementById("btn_episodios").classList.remove("focusable");
 		}
 		else {
+			localStorage.setItem("episodios", JSON.stringify(json.data.documents));
 			firstEpNumber = json.data.documents[0].number;
 			document.getElementById("btn_episodio_atual").textContent = "Assistir Episodio atual : " + json.data.documents[0].number;
 		}
